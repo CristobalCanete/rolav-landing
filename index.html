@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolav - ¿No sabes cuánto vale tu auto?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: floatBackground 20s linear infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes floatBackground {
+            0% { transform: translate(-50px, -50px); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 30px;
+            animation: slideInLeft 1s ease-out;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            animation: slideInLeft 1s ease-out 0.1s both;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 15px;
+            font-weight: 500;
+            animation: slideInLeft 1s ease-out 0.2s both;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 35px;
+            animation: slideInLeft 1s ease-out 0.3s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            animation: slideInLeft 1s ease-out 0.4s both;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+            background: #7c3aed;
+        }
+
+        .cta-secondary:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Trust badges */
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+            margin: 5px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+            animation: slideInLeft 1s ease-out 0.5s both;
+        }
+
+        /* Car Animation */
+        .car-animation {
+            position: relative;
+            height: 400px;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .car {
+            font-size: 4rem;
+            position: absolute;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .car:nth-child(1) {
+            top: 50px;
+            left: 50px;
+            animation-delay: 0s;
+        }
+
+        .car:nth-child(2) {
+            top: 150px;
+            right: 80px;
+            animation-delay: 1s;
+        }
+
+        .car:nth-child(3) {
+            bottom: 80px;
+            left: 120px;
+            animation-delay: 2s;
+        }
+
+        /* Floating emojis */
+        .emoji-float {
+            position: absolute;
+            font-size: 2rem;
+            animation: floatEmoji 4s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .emoji-float:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; }
+        .emoji-float:nth-child(2) { top: 25%; right: 12%; animation-delay: 1s; }
+        .emoji-float:nth-child(3) { bottom: 35%; left: 5%; animation-delay: 2s; }
+
+        @keyframes floatEmoji {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(2deg); }
+            50% { transform: translateY(-20px) rotate(-2deg); }
+            75% { transform: translateY(-10px) rotate(1deg); }
+        }
+
+        /* Pain Points Section */
+        .pain-points {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pain-point {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 4px solid #ef4444;
+            transition: all 0.3s ease;
+        }
+
+        .pain-point:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .pain-point h3 {
+            color: #ef4444;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .pain-point p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            padding: 80px 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(139, 92, 246, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .solution-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .solution h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .solution p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* Chat Section - WhatsApp Style */
+        .chat-section {
+            padding: 100px 0;
+            background: #f0f2f5;
+        }
+
+        .chat-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #e5ddd5;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="whatsapp-pattern" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(0,0,0,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23whatsapp-pattern)"/></svg>');
+        }
+
+        .chat-message {
+            margin-bottom: 16px;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: chatAppear 0.6s ease-out forwards;
+        }
+
+        .chat-message.user {
+            text-align: right;
+        }
+
+        .chat-message.friend {
+            text-align: left;
+        }
+
+        .chat-bubble {
+            display: inline-block;
+            max-width: 75%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 15px;
+            line-height: 1.4;
+            margin-bottom: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .chat-message.user .chat-bubble {
+            background: #dcf8c6;
+            color: #333;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-message.friend .chat-bubble {
+            background: #ffffff;
+            color: #333;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-time {
+            font-size: 12px;
+            color: #667781;
+            margin: 0 12px;
+        }
+
+        @keyframes chatAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: #f8fafc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 49%, rgba(139, 92, 246, 0.03) 50%, transparent 51%);
+            background-size: 20px 20px;
+            animation: backgroundSlide 20s linear infinite;
+        }
+
+        @keyframes backgroundSlide {
+            0% { transform: translateX(-20px) translateY(-20px); }
+            100% { transform: translateX(20px) translateY(20px); }
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .feature p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            padding: 80px 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(139, 92, 246, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .interactive-stat {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .interactive-stat:hover {
+            transform: scale(1.1);
+        }
+
+        .interactive-stat:hover .stat-number {
+            color: #f472b6;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #8b5cf6;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+        }
+
+        /* FAQ Section - Accordion */
+        .faq-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #f8fafc;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            border-left: 4px solid #8b5cf6;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-question h3 {
+            color: #1e293b;
+            font-size: 1.1rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            color: #8b5cf6;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        .faq-answer p {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            padding: 0 30px 20px 30px;
+            margin: 0;
+        }
+
+        /* No Auto Section - Simplified */
+        .no-auto-section {
+            padding: 80px 0;
+            background: #f8fafc;
+            display: flex;
+            justify-content: center;
+        }
+
+        .no-auto-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid #e2e8f0;
+        }
+
+        .no-auto-card h3 {
+            color: #1e293b;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .help-cta {
+            background: #8b5cf6;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .help-cta:hover {
+            background: #7c3aed;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 2px, transparent 2px);
+            background-size: 80px 80px;
+            animation: floatBackground 25s linear infinite reverse;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .final-cta h2 {
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta .cta-buttons {
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta .cta-primary {
+            background: white;
+            color: #8b5cf6;
+            font-size: 1.1rem;
+            padding: 18px 40px;
+        }
+
+        .final-cta .cta-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        /* Visual dividers */
+        .section-divider {
+            height: 80px;
+            background: linear-gradient(45deg, transparent 48%, rgba(139, 92, 246, 0.1) 49%, rgba(139, 92, 246, 0.1) 51%, transparent 52%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-divider::before {
+            content: '🏁';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            40% { transform: translate(-50%, -50%) translateY(-10px); }
+            60% { transform: translate(-50%, -50%) translateY(-5px); }
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+                line-height: 1.3;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .car-animation {
+                height: 200px;
+                order: -1;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .cta-primary, .cta-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+                padding: 18px 24px;
+                font-size: 1.1rem;
+                border-radius: 14px;
+            }
+
+            .trust-badges {
+                justify-content: center;
+                margin-top: 25px;
+            }
+
+            .trust-badge {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+
+            .pain-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .pain-point {
+                padding: 25px 20px;
+            }
+
+            .pain-point h3 {
+                font-size: 1.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .feature {
+                padding: 30px 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .stat-number {
+                font-size: 2.2rem;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+                color: rgba(255,255,255,0.9);
+            }
+
+            .chat-container {
+                margin: 0 20px;
+                padding: 25px 20px;
+            }
+
+            .chat-bubble {
+                max-width: 85%;
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+
+            .no-auto-section {
+                padding: 60px 20px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .no-auto-card {
+                padding: 30px 20px;
+                max-width: 400px;
+                width: 100%;
+            }
+
+            .no-auto-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .help-cta {
+                padding: 14px 28px;
+                font-size: 1rem;
+            }
+
+            .faq-question {
+                padding: 15px 20px;
+            }
+
+            .faq-answer p {
+                padding: 0 20px 15px 20px;
+                font-size: 0.9rem;
+            }
+
+            .final-cta h2 {
+                font-size: 2rem;
+            }
+
+            .final-cta p {
+                font-size: 1rem;
+            }
+
+            .final-cta .cta-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .final-cta .cta-primary,
+            .final-cta .cta-secondary {
+                width: 100%;
+                max-width: 300px;
+                padding: 18px 24px;
+            }
+
+            .emoji-float {
+                font-size: 1.5rem;
+                opacity: 0.5;
+            }
+
+            .hero, .features, .pain-points, .solution, .stats, .final-cta, .chat-section, .no-auto-section {
+                padding: 60px 0;
+            }
+
+            .section-divider {
+                height: 60px;
+            }
+
+            h2 {
+                font-size: 1.8rem !important;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.9rem;
+            }
+
+            .cta-primary, .cta-secondary {
+                max-width: 280px;
+                font-size: 1rem;
+                padding: 16px 20px;
+            }
+
+            .trust-badges {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .trust-badge {
+                width: fit-content;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .final-cta h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Floating emojis - reduced -->
+        <div class="emoji-float">💰</div>
+        <div class="emoji-float">📊</div>
+        <div class="emoji-float">⚡</div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="logo">🚗 Rolav</div>
+                    <h1>¿Quieres vender tu auto y no sabes a qué precio?</h1>
+                    <p class="subtitle">Descubre el valor real de tu vehículo en 5 minutos</p>
+                    <p>Miles de autos se venden por debajo de su valor real porque sus dueños no conocen el precio correcto del mercado. No seas uno de ellos.</p>
+                    
+                    <div class="cta-buttons">
+                        <a href="https://tally.so/r/tu-formulario-aqui" class="cta-primary">
+                            💰 Quiero saber cuánto vale
+                        </a>
+                        <a href="https://tally.so/r/tu-formulario-aqui" class="cta-secondary">
+                            📊 Ver ejemplo de informe
+                        </a>
+                    </div>
+
+                    <div class="trust-badges">
+                        <div class="trust-badge">🔒 100% Seguro</div>
+                        <div class="trust-badge">⚡ Resultado instantáneo</div>
+                        <div class="trust-badge">🆓 Completamente gratis</div>
+                    </div>
+                </div>
+                
+                <div class="car-animation">
+                    <div class="car">🚗</div>
+                    <div class="car">🏎️</div>
+                    <div class="car">🚙</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="pain-points">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h2 style="font-size: 2.2rem; color: #1e293b; margin-bottom: 15px; font-weight: 700;">¿Te suena familiar?</h2>
+                <p style="font-size: 1.1rem; color: #64748b; max-width: 700px; margin: 0 auto;">
+                    Estos son los problemas más comunes que enfrentan los dueños de autos al momento de vender
+                </p>
+            </div>
+
+            <div class="pain-grid">
+                <div class="pain-point">
+                    <h3>😰 "No tengo idea cuánto pedir"</h3>
+                    <p>Revisas MercadoLibre, ChileAutos, Facebook... pero todos los precios son diferentes. ¿Cuál es el correcto?</p>
+                </div>
+
+                <div class="pain-point">
+                    <h3>💸 "Creo que lo vendí muy barato"</h3>
+                    <p>Después de vender descubres autos iguales al tuyo a precios mucho más altos. Ya es muy tarde.</p>
+                </div>
+
+                <div class="pain-point">
+                    <h3>⏰ "Llevo meses sin venderlo"</h3>
+                    <p>Lo pusiste muy caro y nadie pregunta, o muy barato y perdiste dinero. Encontrar el precio justo es difícil.</p>
+                </div>
+
+                <div class="pain-point">
+                    <h3>🤔 "Los compradores me confunden"</h3>
+                    <p>Unos te dicen que vale mucho, otros que muy poco. ¿En quién confiar cuando todos tienen intereses diferentes?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="container">
+            <div class="solution-content">
+                <h2>Rolav te da la respuesta exacta</h2>
+                <p>Analizamos en tiempo real miles de autos similares al tuyo que están actualmente en venta. Te entregamos un informe detallado con el precio mínimo, ideal y máximo para que vendas al mejor precio posible.</p>
+                
+                <div class="cta-buttons">
+                    <a href="https://tally.so/r/tu-formulario-aqui" class="cta-primary">
+                        🚗 Obtener mi tasación gratis
+                    </a>
+                    <a href="https://tally.so/r/tu-formulario-aqui" class="cta-secondary">
+                        📱 Solo toma 5 minutos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Conversation Section -->
+    <section class="chat-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 style="color: #1e293b; font-size: 2.2rem; margin-bottom: 15px; font-weight: 700;">Así empezó Felipe con su auto 🚗</h2>
+                <p style="color: #64748b; font-size: 1.1rem;">
+                    Una conversación real de uno de nuestros usuarios
+                </p>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-message user" style="animation-delay: 0.5s">
+                    <div class="chat-bubble">
+                        Weon, quiero vender mi auto pero no tengo idea cuánto pedir 😅
+                    </div>
+                    <div class="chat-time">14:23</div>
+                </div>
+
+                <div class="chat-message friend" style="animation-delay: 1.2s">
+                    <div class="chat-bubble">
+                        ¿Qué auto tienes?
+                    </div>
+                    <div class="chat-time">14:24</div>
+                </div>
+
+                <div class="chat-message user" style="animation-delay: 2s">
+                    <div class="chat-bubble">
+                        Un Corolla 2019, pero en MercadoLibre y ChileAutos veo precios súper diferentes
+                    </div>
+                    <div class="chat-time">14:25</div>
+                </div>
+
+                <div class="chat-message friend" style="animation-delay: 3s">
+                    <div class="chat-bubble">
+                        Ah, usa Rolav! Te da el precio exacto del mercado
+                    </div>
+                    <div class="chat-time">14:26</div>
+                </div>
+
+                <div class="chat-message user" style="animation-delay: 4s">
+                    <div class="chat-bubble">
+                        ¿Es confiable? 🤔
+                    </div>
+                    <div class="chat-time">14:27</div>
+                </div>
+
+                <div class="chat-message friend" style="animation-delay: 5s">
+                    <div class="chat-bubble">
+                        Sí, es gratis y súper preciso. Yo vendí mi auto al precio que me dijeron 👌
+                    </div>
+                    <div class="chat-time">14:28</div>
+                </div>
+
+                <div class="chat-message user" style="animation-delay: 6s">
+                    <div class="chat-bubble">
+                        Dale, lo voy a probar!
+                    </div>
+                    <div class="chat-time">14:29</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://tally.so/r/tu-formulario-aqui" class="cta-primary">
+                    🚗 Tasar mi auto como Felipe
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h2 style="font-size: 2.2rem; color: #1e293b; margin-bottom: 15px; font-weight: 700;">Cómo funciona Rolav</h2>
+                <p style="font-size: 1.1rem; color: #64748b; max-width: 600px; margin: 0 auto;">
+                    Simple, rápido y preciso. El proceso más confiable del mercado.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature">
+                    <span class="feature-icon">📝</span>
+                    <h3>1. Completas el formulario</h3>
+                    <p>Solo necesitamos datos básicos: marca, modelo, año, kilometraje y algunas preguntas sobre el estado.</p>
+                </div>
+
+                <div class="feature">
+                    <span class="feature-icon">🤖</span>
+                    <h3>2. Analizamos el mercado</h3>
+                    <p>Nuestro sistema busca automáticamente autos similares al tuyo en todos los portales de venta principales.</p>
+                </div>
+
+                <div class="feature">
+                    <span class="feature-icon">📊</span>
+                    <h3>3. Calculamos tu precio</h3>
+                    <p>Procesamos los datos y determinamos el rango de precios ideal según el estado real del mercado.</p>
+                </div>
+
+                <div class="feature">
+                    <span class="feature-icon">📧</span>
+                    <h3>4. Recibes tu informe</h3>
+                    <p>Te enviamos un PDF completo con tu tasación, consejos de venta y contactos útiles para maximizar tu ganancia.</p>
+                </div>
+
+                <div class="feature">
+                    <span class="feature-icon">💎</span>
+                    <h3>5. Vendes al mejor precio</h3>
+                    <p>Con información real del mercado, vendes más rápido y al precio correcto. Sin dudas, sin pérdidas.</p>
+                </div>
+
+                <div class="feature">
+                    <span class="feature-icon">🎁</span>
+                    <h3>6. Acceso a descuentos</h3>
+                    <p>Como cliente Rolav, accedes a descuentos en servicios relacionados: neumáticos, detailing, seguros y más.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 2rem; margin-bottom: 15px; color: white; font-weight: 700;">Resultados que hablan por sí solos 📊</h2>
+                <p style="color: rgba(255,255,255,0.9);">Datos reales de nuestra plataforma</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="interactive-stat">
+                    <div class="stat-number">5,247</div>
+                    <div class="stat-label">🚗 Autos tasados exitosamente</div>
+                </div>
+                <div class="interactive-stat">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">🎯 Precisión en tasaciones</div>
+                </div>
+                <div class="interactive-stat">
+                    <div class="stat-number">5min</div>
+                    <div class="stat-label">⚡ Tiempo promedio de tasación</div>
+                </div>
+                <div class="interactive-stat">
+                    <div class="stat-number">96%</div>
+                    <div class="stat-label">😊 Satisfacción de clientes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 2.2rem; color: #1e293b; margin-bottom: 15px; font-weight: 700;">Preguntas frecuentes 🤔</h2>
+                <p style="font-size: 1.1rem; color: #64748b; max-width: 600px; margin: 0 auto;">
+                    Las dudas más comunes de nuestros usuarios
+                </p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>🕐 ¿Realmente demora solo 5 minutos?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, completar el formulario toma 3-5 minutos. El análisis de nuestro sistema es automático y recibes el informe en tu email al instante.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>💰 ¿Qué tan precisa es la tasación?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Analizamos miles de autos similares al tuyo que están actualmente en venta. Nuestra precisión es del 96% comparado con precios de venta reales.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>🔒 ¿Mis datos están seguros?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutamente. Solo usamos tus datos para generar la tasación. No compartimos información personal con terceros ni enviamos spam.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>📧 ¿Qué incluye el informe PDF?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Precio mínimo, ideal y máximo de venta, comparación con autos similares, consejos para vender más rápido y contactos de servicios relacionados.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>🚗 ¿Funciona para cualquier marca de auto?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, analizamos todas las marcas disponibles en Chile. Desde autos populares hasta marcas premium. Si tu auto está en el mercado, podemos tasarlo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- No encuentras tu auto section -->
+    <section class="no-auto-section">
+        <div class="no-auto-card">
+            <h3>🔍 ¿No encuentras tu marca o modelo específico?</h3>
+            <a href="https://tally.so/r/tu-formulario-especial" class="help-cta">
+                📞 Solicitar ayuda personalizada
+            </a>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>¿Listo para conocer el valor real de tu auto? 🚗✨</h2>
+            <p>Únete a miles de chilenos que ya vendieron sus autos al precio correcto gracias a Rolav 🇨🇱</p>
+            
+            <div class="cta-buttons">
+                <a href="https://tally.so/r/tu-formulario-aqui" class="cta-primary">
+                    🚗 Comenzar tasación gratuita
+                </a>
+                <a href="https://tally.so/r/tu-formulario-aqui" class="cta-secondary">
+                    📞 Hablar con un experto
+                </a>
+            </div>
+
+            <!-- Trust elements -->
+            <div style="margin-top: 40px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-size: 0.9rem; opacity: 0.9;">
+                <span>🔒 Datos seguros</span>
+                <span>⚡ Respuesta inmediata</span>
+                <span>🆓 Sin costo</span>
+                <span>📱 100% online</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.feature, .pain-point, .faq-question').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Counter animation
+        const counters = document.querySelectorAll('.stat-number');
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 1s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => {
+            countObserver.observe(counter);
+        });
+
+        // Chat animation
+        const chatSection = document.querySelector('.chat-section');
+        let chatAnimated = false;
+
+        const chatObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !chatAnimated) {
+                    chatAnimated = true;
+                    animateChat();
+                }
+            });
+        }, { threshold: 0.3 });
+
+        if (chatSection) {
+            chatObserver.observe(chatSection);
+        }
+
+        function animateChat() {
+            const messages = document.querySelectorAll('.chat-message');
+            
+            messages.forEach((message, index) => {
+                setTimeout(() => {
+                    message.style.opacity = '1';
+                    message.style.transform = 'translateY(0)';
+                }, (index + 1) * 800);
+            });
+        }
+
+        // FAQ Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    if (isActive) {
+                        item.classList.remove('active');
+                    } else {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
