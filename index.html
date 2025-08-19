@@ -3,7 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rolav - ¿No sabes cuánto vale tu auto?</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Rolav - ¿No sabes cuánto vale tu auto? | Tasación Gratuita en Chile</title>
+    <meta name="description" content="Descubre el valor real de tu auto en 5 minutos. Tasación gratuita y precisa basada en datos del mercado chileno. Miles de autos tasados exitosamente.">
+    <meta name="keywords" content="tasación auto, valor auto chile, precio auto usado, vender auto, cotizar auto, mercado automotriz chile">
+    <meta name="author" content="Rolav">
+    <link rel="canonical" href="https://rolav.cl">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rolav.cl">
+    <meta property="og:title" content="Rolav - Tasación Gratuita de Autos en Chile 🚗">
+    <meta property="og:description" content="¿Quieres vender tu auto y no sabes a qué precio? Descubre el valor real de tu vehículo en 5 minutos. Tasación gratuita y precisa basada en datos del mercado chileno.">
+    <meta property="og:image" content="https://rolav.cl/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Rolav - Tasación de autos en Chile - Descubre el valor real de tu vehículo">
+    <meta property="og:site_name" content="Rolav">
+    <meta property="og:locale" content="es_CL">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@rolav_cl">
+    <meta name="twitter:creator" content="@rolav_cl">
+    <meta name="twitter:url" content="https://rolav.cl">
+    <meta name="twitter:title" content="Rolav - Tasación Gratuita de Autos en Chile 🚗">
+    <meta name="twitter:description" content="¿Quieres vender tu auto y no sabes a qué precio? Descubre el valor real de tu vehículo en 5 minutos. Tasación gratuita y precisa.">
+    <meta name="twitter:image" content="https://rolav.cl/og-image.jpg">
+    <meta name="twitter:image:alt" content="Rolav - Tasación de autos en Chile">
+    
+    <!-- WhatsApp -->
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:secure_url" content="https://rolav.cl/og-image.jpg">
+    
+    <!-- LinkedIn -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="627">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#8b5cf6">
+    <meta name="msapplication-TileColor" content="#8b5cf6">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://tasar.rolav.cl">
+    <link rel="dns-prefetch" href="https://tasar.rolav.cl">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Rolav",
+        "description": "Tasación gratuita de autos en Chile",
+        "url": "https://rolav.cl",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://tasar.rolav.cl",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -247,29 +312,6 @@
             margin-right: auto;
         }
 
-        /* Tablet optimizations */
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .pain-grid {
-                grid-template-columns: repeat(2, 1fr);
-                max-width: 800px;
-            }
-
-            .pain-point:last-child {
-                grid-column: 1 / -1;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
-            .solution .cta-buttons {
-                gap: 20px;
-            }
-
-            .cta-primary, .cta-secondary {
-                padding: 18px 28px;
-                font-size: 1rem;
-            }
-        }
-
         .pain-point {
             background: #f8fafc;
             padding: 30px;
@@ -328,13 +370,6 @@
             z-index: 1;
         }
 
-        .solution .cta-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
         .solution h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
@@ -346,6 +381,13 @@
             margin-bottom: 40px;
             opacity: 0.9;
             line-height: 1.7;
+        }
+
+        .solution .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* Chat Section - WhatsApp Style */
@@ -607,12 +649,14 @@
             margin: 0;
         }
 
-        /* No Auto Section - Simplified */
+        /* No Auto Section - MEJORADO PARA CENTRADO PERFECTO */
         .no-auto-section {
             padding: 80px 0;
             background: #f8fafc;
             display: flex;
             justify-content: center;
+            align-items: center;
+            min-height: 300px;
         }
 
         .no-auto-card {
@@ -621,8 +665,14 @@
             padding: 40px;
             text-align: center;
             max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border: 2px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .no-auto-card h3 {
@@ -630,6 +680,7 @@
             font-size: 1.4rem;
             margin-bottom: 25px;
             font-weight: 700;
+            text-align: center;
         }
 
         .help-cta {
@@ -764,6 +815,39 @@
             50% { transform: translateY(-15px); }
         }
 
+        /* Tablet optimizations */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .pain-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 800px;
+            }
+
+            .pain-point:last-child {
+                grid-column: 1 / -1;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .solution .cta-buttons {
+                gap: 20px;
+            }
+
+            .cta-primary, .cta-secondary {
+                padding: 18px 28px;
+                font-size: 1rem;
+            }
+
+            /* Mejorar centrado en tablets */
+            .no-auto-section {
+                padding: 60px 20px;
+            }
+
+            .no-auto-card {
+                max-width: 450px;
+                padding: 35px;
+            }
+        }
+
         /* Mobile optimizations */
         @media (max-width: 768px) {
             .hero-content {
@@ -863,34 +947,37 @@
                 padding: 10px 15px;
             }
 
+            /* CENTRADO PERFECTO EN MÓVILES */
             .no-auto-section {
                 padding: 60px 20px;
                 display: flex;
                 justify-content: center;
+                align-items: center;
             }
 
             .no-auto-card {
+                margin: 0;
                 padding: 30px 20px;
-                max-width: 400px;
+                max-width: 100%;
                 width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
             }
 
             .no-auto-card h3 {
                 font-size: 1.2rem;
+                text-align: center;
+                margin-bottom: 20px;
             }
 
             .help-cta {
                 padding: 14px 28px;
                 font-size: 1rem;
-            }
-
-            .faq-question {
-                padding: 15px 20px;
-            }
-
-            .faq-answer p {
-                padding: 0 20px 15px 20px;
-                font-size: 0.9rem;
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
             }
 
             .final-cta h2 {
@@ -924,6 +1011,15 @@
                 width: 100%;
                 max-width: 300px;
                 text-align: center;
+            }
+
+            .faq-question {
+                padding: 15px 20px;
+            }
+
+            .faq-answer p {
+                padding: 0 20px 15px 20px;
+                font-size: 0.9rem;
             }
 
             .emoji-float {
@@ -976,6 +1072,17 @@
 
             .final-cta h2 {
                 font-size: 1.8rem;
+            }
+
+            /* Centrado perfecto en móviles pequeños */
+            .no-auto-card {
+                padding: 25px 15px;
+            }
+
+            .help-cta {
+                max-width: 250px;
+                padding: 12px 24px;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -1281,13 +1388,15 @@
         </div>
     </section>
 
-    <!-- No encuentras tu auto section -->
+    <!-- No encuentras tu auto section - MEJORADA -->
     <section class="no-auto-section">
-        <div class="no-auto-card">
-            <h3>🔍 ¿No encuentras tu marca o modelo específico?</h3>
-            <a href="mailto:hola@rolav.cl" class="help-cta">
-                📧 Contactar soporte
-            </a>
+        <div class="container">
+            <div class="no-auto-card">
+                <h3>🔍 ¿No encuentras tu marca o modelo específico?</h3>
+                <a href="mailto:hola@rolav.cl" class="help-cta">
+                    📧 Contactar soporte
+                </a>
+            </div>
         </div>
     </section>
 
