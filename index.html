@@ -1,4 +1,15 @@
-<!DOCTYPE html>
+.solution .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .solution .cta-primary,
+            .solution .cta-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -239,9 +250,35 @@
 
         .pain-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 50px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Tablet optimizations */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .pain-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 800px;
+            }
+
+            .pain-point:last-child {
+                grid-column: 1 / -1;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .solution .cta-buttons {
+                gap: 20px;
+            }
+
+            .cta-primary, .cta-secondary {
+                padding: 18px 28px;
+                font-size: 1rem;
+            }
         }
 
         .pain-point {
@@ -300,6 +337,13 @@
             margin: 0 auto;
             position: relative;
             z-index: 1;
+        }
+
+        .solution .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .solution h2 {
@@ -880,6 +924,19 @@
                 padding: 18px 24px;
             }
 
+            .solution .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .solution .cta-primary,
+            .solution .cta-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+
             .emoji-float {
                 font-size: 1.5rem;
                 opacity: 0.5;
@@ -951,10 +1008,10 @@
                     <p>Miles de autos se venden por debajo de su valor real porque sus dueños no conocen el precio correcto del mercado. No seas uno de ellos.</p>
                     
                     <div class="cta-buttons">
-                        <a href="https://tally.so/r/tu-formulario-aqui" class="cta-primary">
+                        <a href="https://tasar.rolav.cl" class="cta-primary">
                             💰 Quiero saber cuánto vale
                         </a>
-                        <a href="https://tally.so/r/tu-formulario-aqui" class="cta-secondary">
+                        <a href="https://tasar.rolav.cl" class="cta-secondary">
                             📊 Ver ejemplo de informe
                         </a>
                     </div>
@@ -1000,11 +1057,6 @@
                     <h3>⏰ "Llevo meses sin venderlo"</h3>
                     <p>Lo pusiste muy caro y nadie pregunta, o muy barato y perdiste dinero. Encontrar el precio justo es difícil.</p>
                 </div>
-
-                <div class="pain-point">
-                    <h3>🤔 "Los compradores me confunden"</h3>
-                    <p>Unos te dicen que vale mucho, otros que muy poco. ¿En quién confiar cuando todos tienen intereses diferentes?</p>
-                </div>
             </div>
         </div>
     </section>
@@ -1017,10 +1069,10 @@
                 <p>Analizamos en tiempo real miles de autos similares al tuyo que están actualmente en venta. Te entregamos un informe detallado con el precio mínimo, ideal y máximo para que vendas al mejor precio posible.</p>
                 
                 <div class="cta-buttons">
-                    <a href="https://tally.so/r/tu-formulario-aqui" class="cta-primary">
+                    <a href="https://tasar.rolav.cl" class="cta-primary">
                         🚗 Obtener mi tasación gratis
                     </a>
-                    <a href="https://tally.so/r/tu-formulario-aqui" class="cta-secondary">
+                    <a href="https://tasar.rolav.cl" class="cta-secondary">
                         📱 Solo toma 5 minutos
                     </a>
                 </div>
@@ -1090,7 +1142,7 @@
             </div>
 
             <div style="text-align: center; margin-top: 50px;">
-                <a href="https://tally.so/r/tu-formulario-aqui" class="cta-primary">
+                <a href="https://tasar.rolav.cl" class="cta-primary">
                     🚗 Tasar mi auto como Felipe
                 </a>
             </div>
@@ -1244,8 +1296,8 @@
     <section class="no-auto-section">
         <div class="no-auto-card">
             <h3>🔍 ¿No encuentras tu marca o modelo específico?</h3>
-            <a href="https://tally.so/r/tu-formulario-especial" class="help-cta">
-                📞 Solicitar ayuda personalizada
+            <a href="mailto:hola@rolav.cl" class="help-cta">
+                📧 Contactar soporte
             </a>
         </div>
     </section>
@@ -1257,11 +1309,11 @@
             <p>Únete a miles de chilenos que ya vendieron sus autos al precio correcto gracias a Rolav 🇨🇱</p>
             
             <div class="cta-buttons">
-                <a href="https://tally.so/r/tu-formulario-aqui" class="cta-primary">
+                <a href="https://tasar.rolav.cl" class="cta-primary">
                     🚗 Comenzar tasación gratuita
                 </a>
-                <a href="https://tally.so/r/tu-formulario-aqui" class="cta-secondary">
-                    📞 Hablar con un experto
+                <a href="mailto:hola@rolav.cl" class="cta-secondary">
+                    📧 Contactar equipo
                 </a>
             </div>
 
