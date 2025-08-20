@@ -83,6 +83,42 @@
             overflow-x: hidden;
         }
 
+        /* BOTÓN COMPARTIR FLOTANTE */
+        .share-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9998;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 20px;
+        }
+
+        .share-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.5);
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+        }
+
+        .share-button:active {
+            transform: translateY(0);
+        }
+
+        .share-button.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
@@ -145,7 +181,7 @@
         }
 
         .logo {
-            font-size: 2.5rem;
+            font-size: 3.2rem;
             font-weight: 800;
             color: white;
             margin-bottom: 30px;
@@ -209,6 +245,7 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             border: 1px solid rgba(255,255,255,0.3);
+            cursor: pointer;
         }
 
         .cta-primary:hover {
@@ -793,6 +830,839 @@
             60% { transform: translate(-50%, -50%) translateY(-5px); }
         }
 
+        /* ========== ESTILOS DEL MODAL DEL INFORME ========== */
+        
+        /* MODAL OVERLAY */
+        .report-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            display: none;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .report-modal.active {
+            display: block;
+        }
+
+        /* CONTROLES DEL MODAL */
+        .modal-controls {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 15px 20px;
+            z-index: 10001;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .modal-close {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* CONTENEDOR DEL INFORME */
+        .report-container {
+            max-width: 800px;
+            margin: 80px auto 40px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== ESTILOS ORIGINALES DEL INFORME ===== */
+        
+        .report-content {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #0f172a;
+            background: white;
+        }
+
+        /* PÁGINA */
+        .report-page { 
+            position: relative;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .report-page:last-child { 
+            border-bottom: none;
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 60%, #6366f1 100%);
+            padding: 40px 20px;
+            margin: -20px -20px 12px -20px;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -15%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        /* HEADER CON CARDS */
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .brand-card {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 18px;
+            padding: 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            box-shadow: 
+                0 8px 32px rgba(139, 92, 246, 0.4),
+                0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-card::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -30%;
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .brand-title {
+            font-size: 36px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand-subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .client-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 18px;
+            padding: 18px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .client-card::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: -30%;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .client-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .client-name {
+            font-size: 20px;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .client-email {
+            font-size: 15px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* CARDS GLASSMORPHISM */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 10px;
+            margin-bottom: 12px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.5), transparent);
+        }
+
+        /* TÍTULOS MODERNOS */
+        .section-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            border-radius: 3px;
+        }
+
+        /* GRIDS RESPONSIVOS */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 10px;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .info-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        /* SECCIÓN DE PRECIOS */
+        .price-hero {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 10px;
+            color: #1e293b;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 6px;
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .price-card {
+            text-align: center;
+            padding: 10px 8px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .price-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #64748b;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .price-value {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            color: #1e293b;
+        }
+
+        .price-note {
+            font-size: 10px;
+            color: #64748b;
+        }
+
+        /* RECOMENDACIÓN CENTRAL */
+        .recommendation {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .rec-main {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            padding: 12px;
+            border-radius: 18px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rec-main::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -30%;
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .rec-title {
+            font-size: 15px;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .rec-price {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 4px;
+            letter-spacing: -1px;
+        }
+
+        .rec-subtitle {
+            font-size: 12px;
+            opacity: 0.85;
+            line-height: 1.3;
+        }
+
+        .precision-card {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            padding: 12px;
+            border-radius: 18px;
+            text-align: center;
+            border: 2px solid #cbd5e1;
+        }
+
+        .precision-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .precision-value {
+            font-size: 24px;
+            font-weight: 900;
+            color: #1e293b;
+            margin-bottom: 2px;
+        }
+
+        .precision-note {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        /* UBICACIÓN MODERNA */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .location-card {
+            background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+            padding: 14px;
+            border-radius: 16px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-card::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -40%;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .location-main {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .location-sub {
+            font-size: 14px;
+            opacity: 0.85;
+            line-height: 1.3;
+        }
+
+        /* INSIGHTS GRID */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .insight-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 16px;
+            border-radius: 14px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .insight-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .insight-value {
+            font-size: 24px;
+            font-weight: 900;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        .insight-label {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .insight-comparison {
+            font-size: 9px;
+            color: #6366f1;
+            font-weight: 600;
+        }
+
+        /* SUBTÍTULO PARA PÍLDORA */
+        .section-subtitle {
+            font-size: 16px;
+            color: #64748b;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* TABLA MODERNA */
+        .modern-table {
+            background: rgba(255,255,255,0.95);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .table-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .table-subtitle {
+            font-size: 10px;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        .modern-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .modern-table th {
+            background: #f8fafc;
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .modern-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 15px;
+        }
+
+        .modern-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .price-highlight {
+            color: #6366f1;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .strategies-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+        }
+
+        .strategy-card {
+            background: rgba(255,255,255,0.95);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #8b5cf6;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .strategy-icon {
+            font-size: 20px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .strategy-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .strategy-desc {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .strategy-benefit {
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+            color: #3730a3;
+            padding: 4px 8px;
+            border-radius: 999px;
+            font-size: 9px;
+            font-weight: 700;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* TIPS MODERNOS */
+        .tips-section {
+            margin-top: 8px;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .tip-card {
+            background: rgba(255,255,255,0.95);
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tip-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .tip-text {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        .tip-highlight {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+            padding: 16px;
+            border-radius: 14px;
+            margin-top: 12px;
+            position: relative;
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+
+        .tip-highlight::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .tip-highlight .tip-title {
+            color: white;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .tip-highlight .tip-text {
+            color: rgba(255,255,255,0.9);
+            font-size: 11px;
+        }
+
+        /* FOOTER MODERNO */
+        .modern-footer {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            margin-top: 6px;
+            position: relative;
+        }
+
+        .footer-content {
+            font-size: 9px;
+            color: #64748b;
+            line-height: 1.3;
+        }
+
+        .footer-content strong {
+            color: #1e293b;
+        }
+
+        /* RESPONSIVE MÓVIL PARA EL MODAL */
+        @media (max-width: 768px) {
+            .modal-controls {
+                padding: 12px 15px;
+            }
+
+            .modal-title {
+                font-size: 16px;
+            }
+
+            .modal-close {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .report-container {
+                margin: 60px 10px 20px;
+                border-radius: 15px;
+            }
+
+            .report-page {
+                padding: 15px 10px;
+            }
+
+            .header-content {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .brand-title {
+                font-size: 28px;
+            }
+
+            .client-name {
+                font-size: 16px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .price-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+
+            .recommendation {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .insights-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .strategies-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .modern-table {
+                font-size: 12px;
+            }
+
+            .modern-table th,
+            .modern-table td {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+
+            .section-title {
+                font-size: 16px;
+                padding-left: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .price-grid {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .rec-price {
+                font-size: 22px;
+            }
+
+            .precision-value {
+                font-size: 20px;
+            }
+
+            .insight-value {
+                font-size: 20px;
+            }
+
+            .brand-title {
+                font-size: 24px;
+            }
+
+            .hero-section {
+                padding: 30px 15px;
+            }
+        }
+
         /* Animations */
         @keyframes slideInLeft {
             from {
@@ -846,10 +1716,22 @@
                 max-width: 450px;
                 padding: 35px;
             }
+
+            .logo {
+                font-size: 2.8rem;
+            }
         }
 
         /* Mobile optimizations */
         @media (max-width: 768px) {
+            .share-button {
+                top: 15px;
+                right: 15px;
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -859,6 +1741,10 @@
             .hero-text h1 {
                 font-size: 2.2rem;
                 line-height: 1.3;
+            }
+
+            .logo {
+                font-size: 2.6rem;
             }
 
             .hero-text .subtitle {
@@ -1045,8 +1931,20 @@
         }
 
         @media (max-width: 480px) {
+            .share-button {
+                top: 12px;
+                right: 12px;
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
             .hero-text h1 {
                 font-size: 1.9rem;
+            }
+
+            .logo {
+                font-size: 2.2rem;
             }
 
             .cta-primary, .cta-secondary {
@@ -1107,7 +2005,7 @@
                         <a href="https://tasar.rolav.cl" class="cta-primary">
                             💰 Quiero saber cuánto vale
                         </a>
-                        <a href="https://tasar.rolav.cl" class="cta-secondary">
+                        <a href="#" class="cta-secondary" onclick="openReport(event)">
                             📊 Ver ejemplo de informe
                         </a>
                     </div>
@@ -1168,8 +2066,8 @@
                     <a href="https://tasar.rolav.cl" class="cta-primary">
                         🚗 Obtener mi tasación gratis
                     </a>
-                    <a href="https://tasar.rolav.cl" class="cta-secondary">
-                        📱 Solo toma 5 minutos
+                    <a href="#" class="cta-secondary" onclick="openReport(event)">
+                        📱 Ver ejemplo de informe
                     </a>
                 </div>
             </div>
@@ -1425,7 +2323,715 @@
         </div>
     </section>
 
+    <!-- MODAL DEL INFORME -->
+    <div class="report-modal" id="reportModal">
+        <!-- CONTROLES DEL MODAL -->
+        <div class="modal-controls">
+            <div class="modal-title">📊 Informe Rolav - Demo</div>
+            <button class="modal-close" onclick="closeReport()">✕</button>
+        </div>
+
+        <!-- CONTENEDOR DEL INFORME -->
+        <div class="report-container">
+            <div class="report-content">
+                <!-- PÁGINA 1 -->
+                <div class="report-page">
+                    <!-- HEADER LIMPIO CON CARDS CENTRADAS -->
+                    <div class="container" style="padding-top: 10px; margin-bottom: 10px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                            <!-- CARD ROLAV -->
+                            <div class="brand-card">
+                                <div class="brand-title">🚗 Rolav</div>
+                                <div class="brand-subtitle">Tasación Inteligente</div>
+                            </div>
+                            
+                            <!-- CARD CLIENTE -->
+                            <div class="client-card">
+                                <div class="client-label">Solicitado por</div>
+                                <div class="client-name">Juan P. Ejemplo</div>
+                                <div class="client-email">contacto@ejemplo.cl</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <!-- TU AUTO + UBICACIÓN EN 3 COLUMNAS -->
+                        <div class="glass-card">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+                                <div class="info-card">
+                                    <div class="section-title">🚗 Tu auto</div>
+                                    <div class="info-label">Vehículo</div>
+                                    <div class="info-value">Toyota Corolla Cross</div>
+                                    <div class="info-label" style="margin-top: 6px;">Año</div>
+                                    <div class="info-value">2022</div>
+                                    <div class="info-label" style="margin-top: 6px;">Kilometraje</div>
+                                    <div class="info-value">28.500 km</div>
+                                </div>
+                                
+                                <div class="info-card">
+                                    <div class="section-title">Detalles</div>
+                                    <div class="info-label">Combustible</div>
+                                    <div class="info-value">Gasolina</div>
+                                    <div class="info-label" style="margin-top: 8px;">Transmisión</div>
+                                    <div class="info-value">Automática</div>
+                                    <div class="info-label" style="margin-top: 8px;">Dueños</div>
+                                    <div class="info-value">1 dueño</div>
+                                    <div class="info-label" style="margin-top: 8px;">Mantenciones</div>
+                                    <div class="info-value">Al día</div>
+                                </div>
+
+                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                                    <div class="location-card" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                                        <div class="location-main">📍 Santiago</div>
+                                        <div class="location-sub">Tu mercado actual</div>
+                                    </div>
+                                    <div class="location-card" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                                        <div class="location-main">+$850.000</div>
+                                        <div class="location-sub">Potencial en regiones</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECCIÓN DE PRECIOS REVOLUCIONARIA -->
+                        <div class="glass-card" style="margin-bottom: 10px;">
+                            <div class="section-title">¿Cuánto vale realmente tu auto?</div>
+                            
+                            <div class="price-hero">
+                                <div class="price-grid">
+                                    <div class="price-card">
+                                        <div class="price-label">Mínimo mercado</div>
+                                        <div class="price-value">$18.500.000</div>
+                                        <div class="price-note">venta rápida</div>
+                                    </div>
+                                    <div class="price-card">
+                                        <div class="price-label">Precio ideal</div>
+                                        <div class="price-value">$20.200.000</div>
+                                        <div class="price-note">equilibrio</div>
+                                    </div>
+                                    <div class="price-card">
+                                        <div class="price-label">Máximo real</div>
+                                        <div class="price-value">$21.800.000</div>
+                                        <div class="price-note">paciencia</div>
+                                    </div>
+                                    <div class="price-card">
+                                        <div class="price-label">Sobre mercado</div>
+                                        <div class="price-value">$23.200.000</div>
+                                        <div class="price-note">optimista</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="recommendation">
+                                    <div class="rec-main">
+                                        <div class="rec-title">💡 Nuestro análisis indica</div>
+                                        <div class="rec-price">$21.400.000</div>
+                                        <div class="rec-subtitle">Basado en análisis de 124 Toyota Corolla Cross similares en venta</div>
+                                    </div>
+                                    <div class="precision-card">
+                                        <div class="precision-title">Nuestra precisión</div>
+                                        <div class="precision-value">94%</div>
+                                        <div class="precision-note">vs precios de venta reales</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PÁGINA 2 -->
+                <div class="report-page" style="page-break-before: always; page-break-after: always;">
+                    <div class="container" style="padding-top: 20px;">
+                        <!-- INSIGHTS MODERNOS DENTRO DE GLASS-CARD CON PÍLDORA -->
+                        <div class="glass-card">
+                            <div class="section-title">📈 Por qué vale la pena vender ahora</div>
+                            <div class="section-subtitle">Datos clave para maximizar tu ganancia</div>
+                            
+                            <div class="insights-grid">
+                                <div class="insight-card">
+                                    <div class="insight-icon">📈</div>
+                                    <div class="insight-value">+3.2%</div>
+                                    <div class="insight-label">Tu modelo subió</div>
+                                    <div class="insight-comparison">vs -0.8% mercado general</div>
+                                </div>
+                                <div class="insight-card">
+                                    <div class="insight-icon">⏱️</div>
+                                    <div class="insight-value">35 días</div>
+                                    <div class="insight-label">días para vender bien</div>
+                                    <div class="insight-comparison">vs 58 días SUVs usadas</div>
+                                </div>
+                                <div class="insight-card">
+                                    <div class="insight-icon">👥</div>
+                                    <div class="insight-value">124 autos</div>
+                                    <div class="insight-label">similares en venta ahora</div>
+                                    <div class="insight-comparison">análisis en tiempo real</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TABLA COMPETENCIA MODERNA -->
+                        <div class="glass-card">
+                            <div class="modern-table">
+                                <div class="table-header">
+                                    <div class="table-title">🎯 Dónde publicar para vender al mejor precio</div>
+                                    <div class="table-subtitle">actualizado hace 2 horas</div>
+                                </div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Portal</th>
+                                            <th>Precio promedio</th>
+                                            <th>Cantidad</th>
+                                            <th>Más barato/Más caro</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>MercadoLibre</strong></td>
+                                            <td class="price-highlight">$21.850.000</td>
+                                            <td>45</td>
+                                            <td>$18.9M - $24.2M</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>ChileAutos</strong></td>
+                                            <td class="price-highlight">$21.200.000</td>
+                                            <td>38</td>
+                                            <td>$18.5M - $23.8M</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Yapo.cl</strong></td>
+                                            <td class="price-highlight">$20.750.000</td>
+                                            <td>28</td>
+                                            <td>$18.2M - $23.1M</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Facebook</strong></td>
+                                            <td class="price-highlight">$20.100.000</td>
+                                            <td>13</td>
+                                            <td>$17.8M - $22.5M</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PÁGINA 3 -->
+                <div class="report-page">
+                    <div class="container" style="padding-top: 20px;">
+                        <!-- ESTRATEGIAS MODERNAS UNIFICADAS -->
+                        <div class="glass-card">
+                            <div class="section-title">💰 Tu estrategia para vender por encima del mercado</div>
+                            <div class="section-subtitle">3 mejoras que aumentan $900k tu precio</div>
+                            
+                            <div class="strategies-grid" style="margin-top: 12px;">
+                                <div class="strategy-card">
+                                    <div class="strategy-icon">✨</div>
+                                    <div class="strategy-title">Detailing profesional</div>
+                                    <div class="strategy-desc">$60k de inversión = $450k más en precio final. Los compradores pagan por lo que ven perfecto.</div>
+                                    <div class="strategy-benefit">ROI: 750%</div>
+                                </div>
+                                
+                                <div class="strategy-card">
+                                    <div class="strategy-icon">📋</div>
+                                    <div class="strategy-title">Carpeta de mantenciones</div>
+                                    <div class="strategy-desc">Boletas ordenadas generan confianza instantánea. El 91% pregunta por historial.</div>
+                                    <div class="strategy-benefit">-18 días</div>
+                                </div>
+                                
+                                <div class="strategy-card">
+                                    <div class="strategy-icon">📱</div>
+                                    <div class="strategy-title">Título que convierte</div>
+                                    <div class="strategy-desc">"ÚNICO DUEÑO - Con boletas" genera 3.8x más mensajes que "Vendo Toyota Corolla"</div>
+                                    <div class="strategy-benefit">4x consultas</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TIPS MODERNOS -->
+                        <div class="glass-card">
+                            <div class="section-title">🎯 Cómo vender $2.5M por encima del promedio</div>
+                            <div class="tips-section">
+                                <div class="tips-grid">
+                                    <div class="tip-card">
+                                        <div class="tip-title">⏰ Timing de publicación</div>
+                                        <div class="tip-text">Jueves 19:00 hrs = 42% más visualizaciones. Evita enero (nadie compra).</div>
+                                    </div>
+                                    <div class="tip-card">
+                                        <div class="tip-title">🧠 Precio psicológico</div>
+                                        <div class="tip-text">$21.390.000 genera 6x más interés que $21.400.000. Son solo $10k de diferencia.</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tips-grid">
+                                    <div class="tip-card">
+                                        <div class="tip-title">🚪 Primera impresión</div>
+                                        <div class="tip-text">Aromatizante sutil + alfombrillas limpias = "se ve que lo cuidan bien"</div>
+                                    </div>
+                                    <div class="tip-card">
+                                        <div class="tip-title">💬 Respuesta tipo</div>
+                                        <div class="tip-text">"Único dueño, revisión técnica al día" convence más que especificaciones técnicas.</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tip-highlight">
+                                    <div class="tip-title">🛞 El hack de $900k con neumáticos</div>
+                                    <div class="tip-text">Neumáticos con menos de 5mm = compradores descuentan $1.4M automáticamente. Set nuevo ($450k) recupera $900k en precio final.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modern-footer">
+                            <div class="footer-content">
+                                <strong>Importante:</strong> Valores basados en análisis de 124 Toyota Corolla Cross similares · Precisión: 94%<br>
+                                <strong>¿Dudas?</strong> contacto@rolav.cl
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÓN COMPARTIR FLOTANTE -->
+    <button class="share-button" id="shareButton" onclick="shareRolav()" title="Compartir Rolav">
+        📤
+    </button>
+
     <script>
+        // ========== FUNCIÓN DE COMPARTIR ==========
+        function isMobile() {
+            return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        function isIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent);
+        }
+
+        function isAndroid() {
+            return /Android/i.test(navigator.userAgent);
+        }
+
+        async function shareRolav() {
+            const shareData = {
+                title: 'Rolav - Tasación Gratuita de Autos en Chile',
+                text: '¿Quieres vender tu auto y no sabes a qué precio? Descubre el valor real de tu vehículo en 5 minutos con Rolav 🚗',
+                url: window.location.href
+            };
+
+            // 1. INTENTAR WEB SHARE API NATIVA (mejor experiencia en móviles)
+            if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+                try {
+                    await navigator.share(shareData);
+                    return; // ✅ Éxito con API nativa
+                } catch (error) {
+                    if (error.name === 'AbortError') {
+                        return; // Usuario canceló, no hacer nada
+                    }
+                    // Continuar a fallbacks si hay error
+                }
+            }
+
+            // 2. FALLBACK ESPECÍFICO POR PLATAFORMA
+            if (isMobile()) {
+                // En móviles: mostrar opciones nativas
+                showMobileShareOptions();
+            } else {
+                // En desktop: copiar al portapapeles
+                try {
+                    await navigator.clipboard.writeText(window.location.href);
+                    showShareNotification();
+                } catch (error) {
+                    // Si clipboard falla, mostrar opciones
+                    showDesktopShareOptions();
+                }
+            }
+        }
+
+        function showMobileShareOptions() {
+            const url = window.location.href;
+            const text = '¿Quieres vender tu auto y no sabes a qué precio? Descubre el valor real con Rolav 🚗';
+            const encodedText = encodeURIComponent(text);
+            const encodedUrl = encodeURIComponent(url);
+
+            // Crear modal optimizado para móviles
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                z-index: 10001;
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                animation: fadeIn 0.3s ease;
+                padding: 20px;
+            `;
+            
+            const content = document.createElement('div');
+            content.style.cssText = `
+                background: white;
+                border-radius: 20px 20px 12px 12px;
+                padding: 25px 20px 35px;
+                width: 100%;
+                max-width: 400px;
+                transform: translateY(100%);
+                animation: slideUp 0.4s ease forwards;
+                text-align: center;
+            `;
+            
+            const title = document.createElement('h3');
+            title.textContent = 'Compartir Rolav';
+            title.style.cssText = 'margin-bottom: 25px; color: #1e293b; font-size: 20px; font-weight: 700;';
+            
+            const buttonsContainer = document.createElement('div');
+            buttonsContainer.style.cssText = 'display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;';
+            
+            // Apps móviles principales
+            const apps = [
+                { name: 'WhatsApp', icon: '💬', color: '#25D366', url: `https://wa.me/?text=${encodedText}%20${encodedUrl}` },
+                { name: 'Telegram', icon: '📱', color: '#0088cc', url: `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}` },
+                { name: 'Email', icon: '📧', color: '#EA4335', url: `mailto:?subject=Rolav - Tasación de Autos&body=${encodedText}%0A%0A${url}` },
+                { name: 'SMS', icon: '💬', color: '#34C759', url: `sms:?&body=${encodedText}%20${url}` }
+            ];
+
+            // Agregar apps específicas por OS
+            if (isIOS()) {
+                apps.push({ name: 'Messages', icon: '💙', color: '#007AFF', url: `sms:&body=${encodedText}%20${url}` });
+            }
+
+            apps.forEach(app => {
+                const btn = document.createElement('a');
+                btn.href = app.url;
+                btn.target = '_blank';
+                btn.style.cssText = `
+                    background: ${app.color};
+                    color: white;
+                    padding: 15px 10px;
+                    border-radius: 12px;
+                    text-decoration: none;
+                    font-weight: 600;
+                    font-size: 14px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 8px;
+                    transition: transform 0.2s ease;
+                `;
+                btn.innerHTML = `<span style="font-size: 24px;">${app.icon}</span><span>${app.name}</span>`;
+                btn.onclick = () => setTimeout(() => modal.remove(), 500);
+                
+                // Efecto hover
+                btn.onmousedown = () => btn.style.transform = 'scale(0.95)';
+                btn.onmouseup = () => btn.style.transform = 'scale(1)';
+                
+                buttonsContainer.appendChild(btn);
+            });
+            
+            // Botón copiar
+            const copyBtn = document.createElement('button');
+            copyBtn.style.cssText = `
+                background: #8b5cf6;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 12px;
+                border: none;
+                font-weight: 600;
+                font-size: 16px;
+                width: 100%;
+                margin-bottom: 10px;
+                cursor: pointer;
+            `;
+            copyBtn.innerHTML = '📋 Copiar link';
+            copyBtn.onclick = () => {
+                copyToClipboardFallback(url);
+                copyBtn.innerHTML = '✅ ¡Copiado!';
+                copyBtn.style.background = '#10b981';
+                setTimeout(() => modal.remove(), 1500);
+            };
+            
+            // Botón cerrar
+            const closeBtn = document.createElement('button');
+            closeBtn.style.cssText = `
+                background: #f1f5f9;
+                color: #64748b;
+                padding: 15px 20px;
+                border-radius: 12px;
+                border: none;
+                font-weight: 600;
+                font-size: 16px;
+                width: 100%;
+                cursor: pointer;
+            `;
+            closeBtn.textContent = 'Cancelar';
+            closeBtn.onclick = () => modal.remove();
+            
+            content.appendChild(title);
+            content.appendChild(buttonsContainer);
+            content.appendChild(copyBtn);
+            content.appendChild(closeBtn);
+            modal.appendChild(content);
+            document.body.appendChild(modal);
+            
+            // Cerrar al tocar fuera
+            modal.onclick = (e) => {
+                if (e.target === modal) modal.remove();
+            };
+            
+            addShareAnimations();
+        }
+
+        function showDesktopShareOptions() {
+            const url = window.location.href;
+            const text = '¿Quieres vender tu auto y no sabes a qué precio? Descubre el valor real con Rolav 🚗';
+            const encodedText = encodeURIComponent(text);
+            const encodedUrl = encodeURIComponent(url);
+
+            // Modal centrado para desktop
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                z-index: 10001;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                animation: fadeIn 0.3s ease;
+            `;
+            
+            const content = document.createElement('div');
+            content.style.cssText = `
+                background: white;
+                border-radius: 16px;
+                padding: 35px;
+                max-width: 400px;
+                width: 90%;
+                text-align: center;
+                transform: scale(0.9);
+                animation: scaleIn 0.3s ease forwards;
+            `;
+            
+            const title = document.createElement('h3');
+            title.textContent = 'Compartir Rolav';
+            title.style.cssText = 'margin-bottom: 25px; color: #1e293b; font-size: 22px; font-weight: 700;';
+            
+            const buttonsContainer = document.createElement('div');
+            buttonsContainer.style.cssText = 'display: flex; flex-direction: column; gap: 12px;';
+            
+            // Opciones para desktop
+            const options = [
+                { name: 'WhatsApp Web', icon: '💬', color: '#25D366', url: `https://web.whatsapp.com/send?text=${encodedText}%20${encodedUrl}` },
+                { name: 'Email', icon: '📧', color: '#EA4335', url: `mailto:?subject=Rolav - Tasación de Autos&body=${encodedText}%0A%0A${url}` },
+                { name: 'Twitter', icon: '🐦', color: '#1DA1F2', url: `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}` },
+                { name: 'LinkedIn', icon: '💼', color: '#0077B5', url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}` }
+            ];
+
+            options.forEach(option => {
+                const btn = document.createElement('a');
+                btn.href = option.url;
+                btn.target = '_blank';
+                btn.style.cssText = `
+                    background: ${option.color};
+                    color: white;
+                    padding: 15px 20px;
+                    border-radius: 10px;
+                    text-decoration: none;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    transition: transform 0.2s ease;
+                `;
+                btn.innerHTML = `<span style="font-size: 20px;">${option.icon}</span><span>${option.name}</span>`;
+                btn.onclick = () => setTimeout(() => modal.remove(), 500);
+                
+                buttonsContainer.appendChild(btn);
+            });
+            
+            // Botón copiar
+            const copyBtn = document.createElement('button');
+            copyBtn.style.cssText = `
+                background: #8b5cf6;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 10px;
+                border: none;
+                font-weight: 600;
+                font-size: 16px;
+                width: 100%;
+                margin-top: 8px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+            `;
+            copyBtn.innerHTML = '<span style="font-size: 20px;">📋</span><span>Copiar link</span>';
+            copyBtn.onclick = () => {
+                copyToClipboardFallback(url);
+                copyBtn.innerHTML = '<span style="font-size: 20px;">✅</span><span>¡Copiado!</span>';
+                copyBtn.style.background = '#10b981';
+                setTimeout(() => modal.remove(), 1500);
+            };
+            
+            // Botón cerrar
+            const closeBtn = document.createElement('button');
+            closeBtn.style.cssText = `
+                background: #f1f5f9;
+                color: #64748b;
+                padding: 15px 20px;
+                border-radius: 10px;
+                border: none;
+                font-weight: 600;
+                cursor: pointer;
+                width: 100%;
+                margin-top: 8px;
+            `;
+            closeBtn.textContent = 'Cancelar';
+            closeBtn.onclick = () => modal.remove();
+            
+            content.appendChild(title);
+            content.appendChild(buttonsContainer);
+            content.appendChild(copyBtn);
+            content.appendChild(closeBtn);
+            modal.appendChild(content);
+            document.body.appendChild(modal);
+            
+            modal.onclick = (e) => {
+                if (e.target === modal) modal.remove();
+            };
+            
+            addShareAnimations();
+        }
+
+        function copyToClipboardFallback(text) {
+            // Método fallback que funciona en todos los navegadores
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                console.log('Fallback copy failed');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function showShareNotification() {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: #1e293b;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 12px;
+                font-size: 14px;
+                font-weight: 600;
+                z-index: 10000;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            `;
+            notification.innerHTML = '<span style="font-size: 18px;">✅</span><span>Link copiado al portapapeles</span>';
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        function addShareAnimations() {
+            if (!document.querySelector('#shareAnimations')) {
+                const style = document.createElement('style');
+                style.id = 'shareAnimations';
+                style.textContent = `
+                    @keyframes fadeIn { 
+                        from { opacity: 0; } 
+                        to { opacity: 1; } 
+                    }
+                    @keyframes scaleIn { 
+                        from { transform: scale(0.9); opacity: 0; } 
+                        to { transform: scale(1); opacity: 1; } 
+                    }
+                    @keyframes slideUp { 
+                        from { transform: translateY(100%); } 
+                        to { transform: translateY(0); } 
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        // ========== FUNCIONES DEL MODAL DEL INFORME ==========
+        function openReport(event) {
+            if (event) event.preventDefault();
+            const modal = document.getElementById('reportModal');
+            const shareButton = document.getElementById('shareButton');
+            
+            modal.classList.add('active');
+            shareButton.classList.add('hidden');
+            document.body.style.overflow = 'hidden'; // Evita scroll del body
+        }
+
+        function closeReport() {
+            const modal = document.getElementById('reportModal');
+            const shareButton = document.getElementById('shareButton');
+            
+            modal.classList.remove('active');
+            shareButton.classList.remove('hidden');
+            document.body.style.overflow = 'auto'; // Restaura scroll del body
+        }
+
+        // Cerrar con ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeReport();
+            }
+        });
+
+        // Cerrar al hacer click fuera del contenido
+        document.getElementById('reportModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeReport();
+            }
+        });
+
+        // Prevenir scroll del body cuando el modal está abierto
+        document.getElementById('reportModal').addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        // ========== FUNCIONES DEL LANDING EXISTENTES ==========
+        
         // Animation on scroll
         const observerOptions = {
             threshold: 0.1,
