@@ -18,7 +18,7 @@
             overflow-x: hidden;
         }
 
-        /* BOTÓN COMPARTIR FLOTANTE */
+        /* BOTONES FLOTANTES */
         .share-button {
             position: fixed;
             top: 20px;
@@ -37,15 +37,45 @@
             transition: all 0.3s ease;
             color: white;
             font-size: 20px;
+            text-decoration: none;
+        }
+
+        .benefits-button {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9998;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .share-button:hover, .benefits-button:hover {
+            transform: translateY(-2px);
         }
 
         .share-button:hover {
-            transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(139, 92, 246, 0.5);
             background: linear-gradient(135deg, #7c3aed, #6d28d9);
         }
 
-        .share-button.hidden {
+        .benefits-button:hover {
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+            background: linear-gradient(135deg, #d97706, #b45309);
+        }
+
+        .share-button.hidden, .benefits-button.hidden {
             opacity: 0;
             pointer-events: none;
         }
@@ -2647,28 +2677,36 @@
         </div>
     </div>
 
-    <!-- BOTÓN COMPARTIR FLOTANTE -->
+    <!-- BOTONES FLOTANTES -->
     <button class="share-button" id="shareButton" onclick="alert('Función compartir activada!')" title="Compartir Rolav">
         📤
     </button>
+
+    <a href="club-beneficios.html" class="benefits-button" id="benefitsButton" title="Club de Beneficios">
+        🎁
+    </a>
 
     <script>
         function openReport(event) {
             if (event) event.preventDefault();
             const modal = document.getElementById('reportModal');
             const shareButton = document.getElementById('shareButton');
+            const benefitsButton = document.getElementById('benefitsButton');
             
             modal.classList.add('active');
             shareButton.classList.add('hidden');
+            benefitsButton.classList.add('hidden');
             document.body.style.overflow = 'hidden';
         }
 
         function closeReport() {
             const modal = document.getElementById('reportModal');
             const shareButton = document.getElementById('shareButton');
+            const benefitsButton = document.getElementById('benefitsButton');
             
             modal.classList.remove('active');
             shareButton.classList.remove('hidden');
+            benefitsButton.classList.remove('hidden');
             document.body.style.overflow = 'auto';
         }
 
