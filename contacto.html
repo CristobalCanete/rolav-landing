@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Rolav | Soporte y Consultas</title>
+    <meta name="description" content="¿Tienes dudas sobre la tasación de tu auto? Contáctanos. Soporte especializado, consultas personalizadas y atención al cliente en Chile.">
+    <meta name="keywords" content="contacto rolav, soporte tasación, consultas auto, atención cliente chile">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Contacto - Rolav | Soporte y Consultas">
+    <meta property="og:description" content="¿Tienes dudas sobre la tasación de tu auto? Contáctanos para recibir soporte especializado.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rolav.cl/contacto.html">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contacto - Rolav">
+    <meta name="twitter:description" content="Soporte especializado para la tasación de tu auto en Chile.">
+    
+    <link rel="canonical" href="https://rolav.cl/contacto.html">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-cta {
+            background: white;
+            color: #8b5cf6;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        /* Floating Button */
+        .floating-button {
+            position: fixed;
+            right: 30px;
+            top: 120px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .floating-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(245, 158, 11, 0.4);
+        }
+        
+        .floating-button .tooltip {
+            position: absolute;
+            right: 65px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .floating-button:hover .tooltip {
+            opacity: 1;
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 60px 0;
+            min-height: calc(100vh - 140px);
+        }
+        
+        .contact-hero {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 60px 0;
+        }
+        
+        .contact-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .contact-hero p {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+        
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .contact-info h2 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .contact-details h3 {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .contact-details p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+        }
+        
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .contact-form h2 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: white;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #f59e0b;
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+        }
+        
+        .faq-section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .faq-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .faq-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .faq-item h3 {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .faq-item p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 60px 0 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(139, 92, 246, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: #8b5cf6;
+        }
+
+        .bottom-bar {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 25px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .copyright {
+            text-align: center;
+        }
+        
+        .copyright span {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .floating-button {
+                right: 20px;
+                top: 100px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-info,
+            .contact-form,
+            .faq-section {
+                padding: 25px;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .floating-button .tooltip {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">🚗 Rolav</a>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <nav class="nav-links">
+                    <a href="como-funciona.html" class="nav-link">Cómo funciona</a>
+                    <a href="casos-exito.html" class="nav-link">Casos de éxito</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                    <a href="blog.html" class="nav-link">Blog</a>
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </nav>
+                <div style="display: flex; gap: 10px;">
+                    <a href="index.html" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600;">🏠 Inicio</a>
+                    <a href="https://tasar.rolav.cl" style="background: white; color: #8b5cf6; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600;">🚗 Tasar Auto</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Floating Button -->
+    <a href="club-beneficios.html" class="floating-button">
+        🎁
+        <span class="tooltip">Club de Beneficios</span>
+    </a>
+
+    <main>
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="contact-hero">
+                <h1>¿Necesitas ayuda?</h1>
+                <p>Estamos aquí para resolver todas tus dudas sobre la tasación de tu auto. Contáctanos y te responderemos lo antes posible.</p>
+            </section>
+
+            <!-- Contact Grid -->
+            <div class="contact-grid">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h2>Información de contacto</h2>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Teléfono</h3>
+                            <p>+56 2 2345 6789</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>contacto@rolav.cl</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Dirección</h3>
+                            <p>Av. Providencia 1234<br>Santiago, Chile</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Horarios de atención</h3>
+                            <p>Lun - Vie: 9:00 - 18:00<br>Sáb: 10:00 - 14:00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h2>Envíanos un mensaje</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre completo *</label>
+                            <input type="text" id="name" name="name" required placeholder="Tu nombre completo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+56 9 1234 5678">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Asunto *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Selecciona un tema</option>
+                                <option value="tasacion">Consulta sobre tasación</option>
+                                <option value="venta">Proceso de venta</option>
+                                <option value="tecnico">Soporte técnico</option>
+                                <option value="partnership">Alianzas comerciales</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mensaje *</label>
+                            <textarea id="message" name="message" required placeholder="Cuéntanos tu consulta o cómo podemos ayudarte..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Enviar mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h2>Preguntas frecuentes</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle" style="color: #f59e0b;"></i> ¿Cuánto demora la tasación?</h3>
+                        <p>Nuestro sistema de tasación automatizada te entrega el valor de tu auto en menos de 2 minutos. Solo necesitas ingresar los datos básicos del vehículo.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3><i class="fas fa-shield-alt" style="color: #f59e0b;"></i> ¿Es segura la plataforma?</h3>
+                        <p>Absolutamente. Utilizamos encriptación SSL y no almacenamos datos sensibles. Tu información está completamente protegida con nosotros.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3><i class="fas fa-money-bill-wave" style="color: #f59e0b;"></i> ¿Hay algún costo?</h3>
+                        <p>La tasación básica es completamente gratuita. Solo cobramos una pequeña comisión cuando vendas exitosamente tu auto a través de nuestra plataforma.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3><i class="fas fa-headset" style="color: #f59e0b;"></i> ¿Cómo contacto soporte?</h3>
+                        <p>Puedes contactarnos por teléfono, email o este formulario. Nuestro equipo responde en menos de 24 horas en días hábiles.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div style="font-size: 2rem; font-weight: 800; margin-bottom: 15px; color: white;">Rolav</div>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 20px;">
+                        La plataforma más confiable de Chile para conocer el valor real de tu auto.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Enlaces útiles</h4>
+                    <div class="footer-links">
+                        <a href="https://tasar.rolav.cl">Tasar mi auto</a>
+                        <a href="como-funciona.html">Cómo funciona</a>
+                        <a href="blog.html">Blog</a>
+                        <a href="casos-exito.html">Casos de éxito</a>
+                        <a href="contacto.html">Contacto</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <div class="footer-links">
+                        <a href="guia-vender-auto.html">Guía para vender</a>
+                        <a href="club-beneficios.html">Club de beneficios</a>
+                        <a href="calculadora.html">Calculadora</a>
+                        <a href="faq.html">Preguntas frecuentes</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <div class="footer-links">
+                        <a href="terminos.html">Términos de servicio</a>
+                        <a href="privacidad.html">Política de privacidad</a>
+                        <a href="cookies.html">Política de cookies</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-bar">
+                <div class="copyright">
+                    <span>© 2025 Rolav. Todos los derechos reservados. Hecho en Chile con ❤️</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.name || !data.email || !data.subject || !data.message) {
+                alert('Por favor, completa todos los campos obligatorios.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('¡Mensaje enviado correctamente! Te responderemos pronto.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255,255,255,0.15)';
+            } else {
+                header.style.background = 'rgba(255,255,255,0.1)';
+            }
+        });
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
