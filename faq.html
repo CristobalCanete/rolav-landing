@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes - Rolav | Todo lo que necesitas saber sobre tasación de autos</title>
+    <meta name="description" content="Resuelve todas tus dudas sobre cómo funciona Rolav, la tasación gratuita de autos, tiempos de respuesta, precisión y seguridad de datos.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-inicio {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-tasar {
+            background: white;
+            color: #8b5cf6;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-inicio:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-tasar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            background: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 50px 16px 20px;
+            font-size: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+
+        /* FAQ Categories */
+        .faq-categories {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .category-card {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 4px solid #8b5cf6;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .category-desc {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* FAQ Items */
+        .faq-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            border-left: 4px solid #8b5cf6;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-question h3 {
+            color: #1e293b;
+            font-size: 1.1rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            color: #8b5cf6;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-content {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            padding: 0 30px 25px 30px;
+        }
+
+        .faq-answer-content strong {
+            color: #1e293b;
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .contact-cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .contact-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background: white;
+            color: #8b5cf6;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255,255,255,0.3);
+        }
+
+        .cta-secondary {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.4);
+        }
+
+        .cta-secondary:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 60px 0 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(139, 92, 246, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: #8b5cf6;
+        }
+
+        .bottom-bar {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 25px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .copyright {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* BOTÓN FLOTANTE - Solo Club de Beneficios */
+        .benefits-button {
+            position: fixed;
+            top: 120px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9998;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        .benefits-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+            background: linear-gradient(135deg, #d97706, #b45309);
+        }
+
+        .benefits-button::after {
+            content: 'Club de Beneficios';
+            position: absolute;
+            right: 70px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .benefits-button:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .header-buttons {
+                gap: 8px;
+            }
+
+            .btn-inicio, .btn-tasar {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            .benefits-button {
+                top: 100px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .benefits-button::after {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-question {
+                padding: 20px;
+            }
+
+            .faq-answer-content {
+                padding: 0 20px 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-primary, .cta-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+
+        /* Mejoras adicionales */
+        .nav-container {
+            position: relative;
+        }
+
+        /* Animación suave para los botones del header */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-buttons {
+            animation: slideIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">🚗 Rolav</a>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <nav class="nav-links">
+                    <a href="como-funciona.html" class="nav-link">Cómo funciona</a>
+                    <a href="casos-exito.html" class="nav-link">Casos de éxito</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                    <a href="blog.html" class="nav-link">Blog</a>
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </nav>
+                <div class="header-buttons">
+                    <a href="index.html" class="btn-inicio">
+                        🏠 <span>Inicio</span>
+                    </a>
+                    <a href="https://tasar.rolav.cl" class="btn-tasar">
+                        🚗 <span>Tasar Auto</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Preguntas Frecuentes</h1>
+            <p>Todo lo que necesitas saber sobre Rolav y cómo obtener la tasación perfecta para tu auto</p>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Buscar una pregunta..." id="searchInput">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Categories -->
+    <section class="faq-categories">
+        <div class="container">
+            <div class="categories-grid">
+                <div class="category-card" onclick="scrollToSection('funcionamiento')">
+                    <span class="category-icon">⚙️</span>
+                    <h3 class="category-title">Cómo funciona</h3>
+                    <p class="category-desc">Proceso, tiempos, datos necesarios y metodología de tasación</p>
+                </div>
+                
+                <div class="category-card" onclick="scrollToSection('precision')">
+                    <span class="category-icon">🎯</span>
+                    <h3 class="category-title">Precisión y confiabilidad</h3>
+                    <p class="category-desc">Exactitud de precios, fuentes de datos y casos reales</p>
+                </div>
+                
+                <div class="category-card" onclick="scrollToSection('seguridad')">
+                    <span class="category-icon">🔒</span>
+                    <h3 class="category-title">Seguridad y privacidad</h3>
+                    <p class="category-desc">Protección de datos, uso de información y políticas</p>
+                </div>
+                
+                <div class="category-card" onclick="scrollToSection('costos')">
+                    <span class="category-icon">💰</span>
+                    <h3 class="category-title">Precios y costos</h3>
+                    <p class="category-desc">Servicios gratuitos, costos adicionales y modelos de negocio</p>
+                </div>
+            </div>
+
+            <!-- Funcionamiento -->
+            <div class="faq-section" id="funcionamiento">
+                <h2 class="section-title">⚙️ Cómo funciona Rolav</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Realmente toma solo 5 minutos obtener mi tasación?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Sí, el formulario toma entre 3-5 minutos en completar. Una vez enviado, nuestro sistema procesa automáticamente tu información y recibes el informe completo en tu email en menos de 2 minutos. El tiempo total desde que empiezas hasta que tienes tu tasación es de <strong>7 minutos máximo</strong>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Qué datos necesito para tasar mi auto?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Solo necesitas información básica que cualquier dueño conoce:
+                            <br>• <strong>Marca y modelo</strong> exacto
+                            <br>• <strong>Año</strong> del vehículo
+                            <br>• <strong>Kilometraje</strong> actual
+                            <br>• <strong>Estado general</strong> (excelente, bueno, regular)
+                            <br>• <strong>Ubicación</strong> (ciudad)
+                            <br>• <strong>Tu email</strong> para enviarte el informe
+                            <br><br>No necesitas documentos, fotos ni información técnica compleja.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Cómo calculan el precio de mi auto?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Nuestro algoritmo analiza <strong>miles de autos similares al tuyo</strong> que están actualmente en venta en los principales portales (MercadoLibre, ChileAutos, Facebook Marketplace, etc.). Consideramos:
+                            <br>• Autos idénticos o muy similares al tuyo
+                            <br>• Mismo año y rango de kilometraje
+                            <br>• Misma ubicación geográfica
+                            <br>• Estado reportado del vehículo
+                            <br>• Tendencias del mercado en tiempo real
+                            <br><br>Te entregamos 3 precios: <strong>venta rápida, precio óptimo y con paciencia</strong>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Funciona para cualquier marca y modelo de auto?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Sí, analizamos todas las marcas y modelos disponibles en Chile. Desde autos populares (Toyota, Chevrolet, Nissan) hasta marcas premium (BMW, Mercedes-Benz, Audi) y autos eléctricos. Si tu auto se vende en Chile, podemos tasarlo. En casos muy específicos o modelos únicos, te conectamos directamente con expertos especializados.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Precisión -->
+            <div class="faq-section" id="precision">
+                <h2 class="section-title">🎯 Precisión y confiabilidad</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Qué tan precisa es la tasación de Rolav?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Nuestra precisión es del <strong>96% comparado con precios de venta reales</strong>. Esto significa que 9 de cada 10 autos se venden dentro del rango de precios que recomendamos. Validamos constantemente nuestras predicciones con datos de ventas efectivas para mantener esta alta precisión.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿De dónde obtienen los datos para las tasaciones?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Obtenemos datos en tiempo real de:
+                            <br>• <strong>MercadoLibre</strong> - Plataforma principal de venta
+                            <br>• <strong>ChileAutos</strong> - Especializada en vehículos
+                            <br>• <strong>Facebook Marketplace</strong> - Mercado social
+                            <br>• <strong>Portales regionales</strong> - Específicos por ciudad
+                            <br>• <strong>Concesionarios</strong> - Precios oficiales
+                            <br><br>Analizamos más de <strong>100.000 avisos activos diariamente</strong> para mantenernos actualizados con el mercado real.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Con qué frecuencia se actualizan los precios?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Los precios se actualizan <strong>cada 24 horas</strong>. Nuestro sistema trabaja de madrugada analizando todos los portales y ajustando las valoraciones según las nuevas publicaciones, cambios de precio y autos vendidos. Esto garantiza que siempre tengas información actualizada del mercado.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Qué pasa si no hay suficientes autos similares al mío?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Si tu auto es muy específico o hay pocos en venta, expandimos la búsqueda a:
+                            <br>• Modelos similares de la misma marca
+                            <br>• Versiones anteriores o posteriores del mismo modelo
+                            <br>• Autos con características equivalentes
+                            <br>• Datos históricos de ventas
+                            <br><br>En casos extremos, te conectamos con tasadores especializados que harán una evaluación personalizada <strong>sin costo adicional</strong>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seguridad -->
+            <div class="faq-section" id="seguridad">
+                <h2 class="section-title">🔒 Seguridad y privacidad</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Mis datos personales están seguros?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Absolutamente. Usamos <strong>encriptación nivel bancario</strong> y cumplimos con todas las normativas chilenas de protección de datos. Solo recopilamos la información mínima necesaria para generar tu tasación y nunca compartimos datos personales con terceros sin tu consentimiento explícito.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Van a llamarme o enviarme spam después de usar Rolav?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <strong>No</strong>. Solo te enviamos:
+                            <br>• Tu informe de tasación inmediato
+                            <br>• Un email opcional con consejos de venta (puedes cancelarlo)
+                            <br>• Notificaciones del Club de Beneficios si te suscribes
+                            <br><br>No vendemos tu información ni te incluimos en listas de marketing sin tu permiso. Respetamos tu privacidad.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Puedo eliminar mis datos después de usar el servicio?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Sí, tienes el derecho de solicitar la eliminación completa de tus datos en cualquier momento. Solo envía un email a <strong>hola@rolav.cl</strong> con el asunto "Eliminar mis datos" y procesaremos tu solicitud en máximo 48 horas hábiles.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Costos -->
+            <div class="faq-section" id="costos">
+                <h2 class="section-title">💰 Precios y costos</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿La tasación es realmente gratis?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <strong>Sí, completamente gratis</strong>. La tasación básica no tiene costo y incluye:
+                            <br>• Informe completo en PDF
+                            <br>• 3 rangos de precios personalizados
+                            <br>• Análisis comparativo con autos similares
+                            <br>• Consejos de venta
+                            <br>• Acceso automático al Club de Beneficios
+                            <br><br>No hay letra chica ni cobros ocultos.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Cómo se mantiene gratis el servicio?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Rolav se mantiene gratis gracias a:
+                            <br>• <strong>Comisiones de servicios</strong>: Cuando usas servicios recomendados (detailing, fotografía, etc.)
+                            <br>• <strong>Partnerships</strong>: Acuerdos con empresas del rubro automotriz
+                            <br>• <strong>Servicios premium</strong>: Tasaciones especializadas para autos únicos o clásicos
+                            <br><br>Tu tasación básica siempre será gratuita, sin excepciones.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Qué incluye el Club de Beneficios?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Al usar Rolav, automáticamente accedes a descuentos exclusivos en:
+                            <br>• <strong>Detailing profesional</strong>: 15-20% de descuento
+                            <br>• <strong>Fotografía de autos</strong>: Sesiones desde $25.000
+                            <br>• <strong>Neumáticos</strong>: Hasta 25% off en marcas premium
+                            <br>• <strong>Seguros</strong>: Cotizaciones preferenciales
+                            <br>• <strong>Servicios mecánicos</strong>: Descuentos en talleres certificados
+                            <br><br>Los beneficios se envían por email después de tu tasación.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTÓN FLOTANTE - Solo Club de Beneficios -->
+    <a href="club-beneficios.html" class="benefits-button" title="Club de Beneficios">
+        🎁
+    </a>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta">
+        <div class="container">
+            <h2>¿No encontraste tu respuesta?</h2>
+            <p>Nuestro equipo está aquí para ayudarte con cualquier duda específica sobre tu auto</p>
+            <div class="cta-buttons">
+                <a href="contacto.html" class="cta-primary">Contactar soporte</a>
+                <a href="https://tasar.rolav.cl" class="cta-secondary">Tasar mi auto ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div style="font-size: 2rem; font-weight: 800; margin-bottom: 15px; color: white;">🚗 Rolav</div>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 20px;">
+                        La plataforma más confiable de Chile para conocer el valor real de tu auto.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Enlaces útiles</h4>
+                    <div class="footer-links">
+                        <a href="https://tasar.rolav.cl">🚗 Tasar mi auto</a>
+                        <a href="como-funciona.html">❓ Cómo funciona</a>
+                        <a href="blog.html">📝 Blog</a>
+                        <a href="casos-exito.html">🏆 Casos de éxito</a>
+                        <a href="contacto.html">📞 Contacto</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <div class="footer-links">
+                        <a href="guia-vender-auto.html">📖 Guía para vender</a>
+                        <a href="club-beneficios.html">🎁 Club de beneficios</a>
+                        <a href="calculadora.html">📊 Calculadora</a>
+                        <a href="faq.html">❔ Preguntas frecuentes</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <div class="footer-links">
+                        <a href="terminos.html">Términos de servicio</a>
+                        <a href="privacidad.html">Política de privacidad</a>
+                        <a href="cookies.html">Política de cookies</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-bar">
+                <div class="copyright">
+                    <span>© 2025 Rolav. Todos los derechos reservados. 🇨🇱 Hecho en Chile con ❤️</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    if (isActive) {
+                        item.classList.remove('active');
+                    } else {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const faqItems = document.querySelectorAll('.faq-item');
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('h3').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer-content').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        if (searchTerm.length > 0) {
+                            item.classList.add('active');
+                        }
+                    } else {
+                        item.style.display = 'none';
+                        item.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
