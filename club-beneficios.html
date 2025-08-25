@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Rolav - Beneficios Exclusivos para Clientes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8fafc;
+        }
+
+        /* Header Navigation */
+        .header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-nav {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-home {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-home:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-1px);
+        }
+
+        .btn-tasar {
+            background: white;
+            color: #8b5cf6;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-tasar:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: #1e293b;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .membership-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #8b5cf6;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        /* Benefits Grid */
+        .benefits-section h2 {
+            text-align: center;
+            font-size: 2.3rem;
+            color: #1e293b;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .benefits-intro {
+            text-align: center;
+            color: #64748b;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+        }
+
+        .benefit-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .benefit-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .benefit-discount {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .benefit-description {
+            color: #64748b;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .benefit-details {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .benefit-details h4 {
+            color: #334155;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .benefit-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefit-details li {
+            color: #475569;
+            padding: 4px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .benefit-details li::before {
+            content: '✓';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .benefit-contact {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .contact-info {
+            color: #334155;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .contact-btn {
+            background: #8b5cf6;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #7c3aed;
+            transform: translateY(-1px);
+        }
+
+        /* Premium Benefits */
+        .premium-section {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 20px;
+            padding: 50px 40px;
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 2px, transparent 2px);
+            background-size: 50px 50px;
+            animation: floatBackground 20s linear infinite;
+        }
+
+        @keyframes floatBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .premium-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .premium-section h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .premium-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .premium-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .premium-feature {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .premium-feature h4 {
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        /* How to Join */
+        .join-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .join-section h3 {
+            font-size: 2rem;
+            color: #1e293b;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .join-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .step {
+            position: relative;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.3rem;
+            margin: 0 auto 15px;
+        }
+
+        .step h4 {
+            color: #1e293b;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .join-cta {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-block;
+            margin-top: 30px;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .join-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.5);
+        }
+
+        /* Terms Section */
+        .terms-section {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .terms-section h4 {
+            color: #334155;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .terms-section ul {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .terms-section li {
+            margin-bottom: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit-card {
+                padding: 25px 20px;
+            }
+
+            .premium-section,
+            .join-section,
+            .stats-section {
+                padding: 40px 25px;
+            }
+
+            .nav-buttons {
+                gap: 8px;
+            }
+
+            .btn-home, .btn-tasar {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo-nav">🚗 Rolav</a>
+            <div class="nav-buttons">
+                <a href="index.html" class="btn-home">🏠 Inicio</a>
+                <a href="https://tasar.rolav.cl" class="btn-tasar">💰 Tasar Auto</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>🎁 Club Rolav - Beneficios Exclusivos</h1>
+            <p>Aprovecha descuentos y ofertas especiales en servicios relacionados con tu auto. Solo para clientes que han usado nuestra tasación gratuita.</p>
+            <div class="membership-badge">
+                ✨ Membresía gratuita de por vida
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <h3 style="color: #1e293b; font-weight: 700; margin-bottom: 10px;">Nuestros clientes ya han ahorrado</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">$2.1M</div>
+                    <div class="stat-label">Ahorro promedio anual por cliente</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3,247</div>
+                    <div class="stat-label">Clientes activos del club</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">47</div>
+                    <div class="stat-label">Empresas aliadas en Chile</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">96%</div>
+                    <div class="stat-label">Satisfacción con beneficios</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefits Section -->
+        <div class="benefits-section">
+            <h2>🏆 Beneficios Exclusivos Disponibles</h2>
+            <p class="benefits-intro">
+                Accede a descuentos reales en servicios que necesitas para tu auto. Todos nuestros aliados están verificados y ofrecen calidad garantizada.
+            </p>
+
+            <div class="benefits-grid">
+                <!-- Neumáticos -->
+                <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">🏎️</div>
+                        <div>
+                            <div class="benefit-title">Neumáticos</div>
+                            <div class="benefit-discount">5% OFF</div>
+                        </div>
+                    </div>
+                    <p class="benefit-description">
+                        Descuento especial en la compra de 2 o más neumáticos en nuestros aliados comerciales. Incluye balanceo gratuito.
+                    </p>
+                    <div class="benefit-details">
+                        <h4>📍 Disponible en:</h4>
+                        <ul>
+                            <li>Euroneumáticos (Santiago y regiones)</li>
+                            <li>Bridgestone Center (15 sucursales)</li>
+                            <li>Falabella Auto (todo Chile)</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-details">
+                        <h4>✅ Condiciones:</h4>
+                        <ul>
+                            <li>Mínimo 2 neumáticos por compra</li>
+                            <li>Válido en todas las marcas disponibles</li>
+                            <li>Incluye balanceo gratuito</li>
+                            <li>Garantía estándar del fabricante</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-contact">
+                        <div class="contact-info">Contacto directo</div>
+                        <a href="https://wa.me/56912345678?text=Hola%2C%20soy%20cliente%20Rolav%20y%20quiero%20el%20descuento%20en%20neum%C3%A1ticos" class="contact-btn">💬 WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Detailing y Lavado -->
+                <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">✨</div>
+                        <div>
+                            <div class="benefit-title">Detailing y Lavado</div>
+                            <div class="benefit-discount">15% OFF</div>
+                        </div>
+                    </div>
+                    <p class="benefit-description">
+                        Servicios de lavado premium, encerado, pulido y detailing completo para mantener tu auto como nuevo.
+                    </p>
+                    <div class="benefit-details">
+                        <h4>🧽 Servicios incluidos:</h4>
+                        <ul>
+                            <li>Lavado premium exterior e interior</li>
+                            <li>Encerado y pulido profesional</li>
+                            <li>Limpieza profunda de tapices</li>
+                            <li>Tratamiento de cuero y plásticos</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-details">
+                        <h4>📍 Centros autorizados:</h4>
+                        <ul>
+                            <li>AutoSpa Premium (Las Condes, Providencia)</li>
+                            <li>DetailPro Chile (Ñuñoa, San Miguel)</li>
+                            <li>Lavado Express VIP (todo Santiago)</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-contact">
+                        <div class="contact-info">Reserva cita</div>
+                        <a href="https://wa.me/56987654321?text=Cliente%20Rolav%2C%20quiero%20agendar%20detailing%20con%20descuento" class="contact-btn">📅 Agendar</a>
+                    </div>
+                </div>
+
+                <!-- Seguros -->
+                <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">🛡️</div>
+                        <div>
+                            <div class="benefit-title">Seguros Automotrices</div>
+                            <div class="benefit-discount">10% OFF</div>
+                        </div>
+                    </div>
+                    <p class="benefit-description">
+                        Descuento especial en pólizas de seguros para tu auto. Compara entre múltiples aseguradoras y obtén el mejor precio.
+                    </p>
+                    <div class="benefit-details">
+                        <h4>🏢 Aseguradoras participantes:</h4>
+                        <ul>
+                            <li>MAPFRE Chile</li>
+                            <li>Liberty Seguros</li>
+                            <li>HDI Seguros</li>
+                            <li>Zurich Chile</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-details">
+                        <h4>📋 Incluye:</h4>
+                        <ul>
+                            <li>Cotización gratuita comparativa</li>
+                            <li>Asesoría personalizada</li>
+                            <li>Trámites 100% online</li>
+                            <li>Renovación automática con descuento</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-contact">
+                        <div class="contact-info">Cotiza gratis</div>
+                        <a href="mailto:seguros@rolav.cl?subject=Cotización%20Seguro%20-%20Cliente%20Rolav" class="contact-btn">📧 Cotizar</a>
+                    </div>
+                </div>
+
+                <!-- Mecánica -->
+                <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">🔧</div>
+                        <div>
+                            <div class="benefit-title">Servicios Mecánicos</div>
+                            <div class="benefit-discount">8% OFF</div>
+                        </div>
+                    </div>
+                    <p class="benefit-description">
+                        Mantenciones, reparaciones y diagnósticos con talleres certificados. Garantía en todos los trabajos realizados.
+                    </p>
+                    <div class="benefit-details">
+                        <h4>🔧 Servicios disponibles:</h4>
+                        <ul>
+                            <li>Mantenciones programadas</li>
+                            <li>Diagnóstico computarizado</li>
+                            <li>Reparaciones generales</li>
+                            <li>Cambio de aceite y filtros</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-details">
+                        <h4>🏭 Talleres autorizados:</h4>
+                        <ul>
+                            <li>Red de talleres Autoplanet</li>
+                            <li>Centros de servicio Copec</li>
+                            <li>Talleres independientes certificados</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-contact">
+                        <div class="contact-info">Encuentra taller</div>
+                        <a href="https://wa.me/56911223344?text=Cliente%20Rolav%2C%20necesito%20servicio%20mec%C3%A1nico" class="contact-btn">🔍 Buscar</a>
+                    </div>
+                </div>
+
+                <!-- Financiamiento -->
+                <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">💳</div>
+                        <div>
+                            <div class="benefit-title">Créditos Automotrices</div>
+                            <div class="benefit-discount">0,5% menos tasa</div>
+                        </div>
+                    </div>
+                    <p class="benefit-description">
+                        Financiamiento preferencial para compra de autos nuevos y usados. Pre-aprobación en 24 horas.
+                    </p>
+                    <div class="benefit-details">
+                        <h4>🏦 Instituciones participantes:</h4>
+                        <ul>
+                            <li>Banco de Chile</li>
+                            <li>Scotiabank</li>
+                            <li>Banco Falabella</li>
+                            <li>Coopeuch</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-details">
+                        <h4>💰 Beneficios:</h4>
+                        <ul>
+                            <li>Hasta 0,5% menos en tasa de interés</li>
+                            <li>Evaluación crediticia gratuita</li>
+                            <li>Hasta 7 años de financiamiento</li>
+                            <li>Sin gastos operacionales</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-contact">
+                        <div class="contact-info">Simula tu crédito</div>
+                        <a href="mailto:creditos@rolav.cl?subject=Simulación%20Crédito%20-%20Cliente%20Rolav" class="contact-btn">📊 Simular</a>
+                    </div>
+                </div>
+
+                <!-- Accesorios -->
+                <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">🎯</div>
+                        <div>
+                            <div class="benefit-title">Accesorios Automotrices</div>
+                            <div class="benefit-discount">12% OFF</div>
+                        </div>
+                    </div>
+                    <p class="benefit-description">
+                        Amplio catálogo de accesorios para personalizar y mejorar tu auto. Desde fundas hasta sistemas de audio.
+                    </p>
+                    <div class="benefit-details">
+                        <h4>🛒 Productos disponibles:</h4>
+                        <ul>
+                            <li>Sistemas de audio y multimedia</li>
+                            <li>Fundas y protecciones</li>
+                            <li>Alarmas y sistemas de seguridad</li>
+                            <li>Luces LED y modificaciones</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-details">
+                        <h4>🏪 Tiendas participantes:</h4>
+                        <ul>
+                            <li>AutoZone Chile</li>
+                            <li>Repuestos O'Reilly</li>
+                            <li>Casa Royal</li>
+                            <li>Tiendas especializadas online</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-contact">
+                        <div class="contact-info">Catálogo online</div>
+                        <a href="https://wa.me/56933445566?text=Cliente%20Rolav%2C%20quiero%20ver%20accesorios%20con%20descuento" class="contact-btn">🛍️ Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Premium Benefits -->
+        <div class="premium-section">
+            <div class="premium-content">
+                <h3>🌟 Beneficios Premium Próximamente</h3>
+                <p>Estamos trabajando en beneficios aún más exclusivos para nuestros mejores clientes</p>
+                
+                <div class="premium-features">
+                    <div class="premium-feature">
+                        <h4>🚗 Valet Parking</h4>
+                        <p>Servicio de estacionamiento premium en centros comerciales seleccionados</p>
+                    </div>
+                    <div class="premium-feature">
+                        <h4>🛣️ Asistencia en Carretera</h4>
+                        <p>Servicio de grúa y asistencia mecánica 24/7 en todo Chile</p>
+                    </div>
+                    <div class="premium-feature">
+                        <h4>💎 Tasaciones VIP</h4>
+                        <p>Tasaciones presenciales con experto certificado para autos de alta gama</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How to Join -->
+        <div class="join-section">
+            <h3>🎯 Cómo acceder a los beneficios</h3>
+            <p style="color: #64748b; font-size: 1.1rem; margin-bottom: 20px;">
+                Es súper fácil y completamente gratuito
+            </p>
+
+            <div class="join-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Usa la tasación gratuita</h4>
+                    <p>Completa tu tasación gratuita en tasar.rolav.cl y recibe tu informe por email</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Activa tu membresía</h4>
+                    <p>Te enviamos automáticamente tu código de membresía del Club Rolav por email</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Disfruta los beneficios</h4>
+                    <p>Usa tu código en cualquiera de nuestros aliados comerciales y ahorra dinero</p>
+                </div>
+            </div>
+
+            <a href="https://tasar.rolav.cl" class="join-cta">
+                🚗 Obtener mi membresía gratuita
+            </a>
+
+            <!-- Terms -->
+            <div class="terms-section">
+                <h4>📋 Términos y condiciones</h4>
+                <ul>
+                    <li>La membresía es gratuita y de por vida para clientes que completen la tasación</li>
+                    <li>Los descuentos pueden variar según disponibilidad del aliado comercial</li>
+                    <li>Algunos beneficios requieren un consumo mínimo específico</li>
+                    <li>Los descuentos no son acumulables con otras promociones</li>
+                    <li>Rolav se reserva el derecho de modificar los beneficios con aviso previo</li>
+                    <li>Para usar los beneficios debes presentar tu código de membresía</li>
+                    <li>Los aliados comerciales pueden cambiar sin previo aviso</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add hover effects to benefit cards
+        document.querySelectorAll('.benefit-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
