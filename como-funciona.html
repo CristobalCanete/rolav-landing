@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo funciona Rolav | Proceso completo de tasación de autos en Chile</title>
+    <meta name="description" content="Descubre paso a paso cómo funciona Rolav. Desde el formulario hasta tu informe PDF. Proceso transparente, rápido y 100% gratuito.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-inicio {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-tasar {
+            background: white;
+            color: #8b5cf6;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-inicio:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-tasar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            background: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .hero-stat {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            padding: 100px 0;
+            background: #f8fafc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 49%, rgba(139, 92, 246, 0.03) 50%, transparent 51%);
+            background-size: 20px 20px;
+            animation: backgroundSlide 20s linear infinite;
+        }
+
+        @keyframes backgroundSlide {
+            0% { transform: translateX(-20px) translateY(-20px); }
+            100% { transform: translateX(20px) translateY(20px); }
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .steps-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+
+        .step:nth-child(even) .step-content {
+            order: 2;
+        }
+
+        .step:nth-child(even) .step-visual {
+            order: 1;
+        }
+
+        .step-content {
+            padding: 40px;
+        }
+
+        .step-badge {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .step-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .step-description {
+            font-size: 1.1rem;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .step-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .step-features li {
+            color: #374151;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .step-features li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        .step-cta {
+            background: #8b5cf6;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .step-cta:hover {
+            background: #7c3aed;
+            transform: translateY(-2px);
+        }
+
+        .step-visual {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+
+        /* Visual Components */
+        .form-mockup {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .form-field {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            background: white;
+            font-size: 0.95rem;
+        }
+
+        .form-select {
+            background-color: white;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 18px;
+            appearance: none;
+        }
+
+        .analysis-mockup {
+            text-align: center;
+        }
+
+        .analysis-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            display: block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .analysis-text {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .progress-fill {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            height: 100%;
+            border-radius: 4px;
+            animation: progressFill 3s ease-in-out infinite;
+        }
+
+        @keyframes progressFill {
+            0% { width: 0%; }
+            50% { width: 85%; }
+            100% { width: 100%; }
+        }
+
+        .report-mockup {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .report-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .report-subtitle {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .price-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .price-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+        }
+
+        .price-card.optimal {
+            border-color: #8b5cf6;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+        }
+
+        .price-label {
+            font-size: 0.8rem;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .price-value {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #1e293b;
+        }
+
+        .download-button {
+            background: #8b5cf6;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        /* Technology Section */
+        .technology {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .technology::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(139, 92, 246, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .tech-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .tech-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .tech-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .tech-desc {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+        }
+
+        /* Transparency Section */
+        .transparency {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .transparency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .transparency-card {
+            background: #f8fafc;
+            padding: 40px 30px;
+            border-radius: 20px;
+            border-left: 5px solid #8b5cf6;
+            transition: all 0.3s ease;
+        }
+
+        .transparency-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .transparency-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .transparency-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .transparency-desc {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .transparency-details {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .transparency-details ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .transparency-details li {
+            color: #374151;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .transparency-details li::before {
+            content: '•';
+            color: #8b5cf6;
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 2px, transparent 2px);
+            background-size: 80px 80px;
+            animation: floatBackground 25s linear infinite reverse;
+        }
+
+        @keyframes floatBackground {
+            0% { transform: translate(-80px, -80px); }
+            100% { transform: translate(80px, 80px); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .cta-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            background: white;
+            color: #8b5cf6;
+            padding: 20px 45px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255,255,255,0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 60px 0 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(139, 92, 246, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: #8b5cf6;
+        }
+
+        .bottom-bar {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 25px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .copyright {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* BOTÓN FLOTANTE - Solo Club de Beneficios */
+        .benefits-button {
+            position: fixed;
+            top: 120px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9998;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        .benefits-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+            background: linear-gradient(135deg, #d97706, #b45309);
+        }
+
+        .benefits-button::after {
+            content: 'Club de Beneficios';
+            position: absolute;
+            right: 70px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .benefits-button:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .header-buttons {
+                gap: 8px;
+            }
+
+            .btn-inicio, .btn-tasar {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            .benefits-button {
+                top: 100px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .benefits-button::after {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin-bottom: 80px;
+            }
+
+            .step:nth-child(even) .step-content,
+            .step:nth-child(even) .step-visual {
+                order: initial;
+            }
+
+            .step-title {
+                font-size: 1.8rem;
+            }
+
+            .price-cards {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .transparency-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .cta-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .benefits-button {
+                top: 90px;
+                right: 12px;
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .step-content {
+                padding: 20px;
+            }
+
+            .step-visual {
+                padding: 25px;
+            }
+        }
+
+        /* Mejoras adicionales */
+        .nav-container {
+            position: relative;
+        }
+
+        /* Animación suave para los botones del header */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-buttons {
+            animation: slideIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">🚗 Rolav</a>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <nav class="nav-links">
+                    <a href="como-funciona.html" class="nav-link">Cómo funciona</a>
+                    <a href="casos-exito.html" class="nav-link">Casos de éxito</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                    <a href="blog.html" class="nav-link">Blog</a>
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </nav>
+                <div class="header-buttons">
+                    <a href="index.html" class="btn-inicio">
+                        🏠 <span>Inicio</span>
+                    </a>
+                    <a href="https://tasar.rolav.cl" class="btn-tasar">
+                        🚗 <span>Tasar Auto</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Cómo funciona Rolav</h1>
+                <p>Descubre el proceso completo paso a paso. Desde que ingresas los datos de tu auto hasta que recibes tu informe completo en PDF. Transparente, rápido y 100% gratuito.</p>
+
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">5 min</div>
+                        <div class="hero-stat-label">Proceso completo</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">24/7</div>
+                        <div class="hero-stat-label">Disponible siempre</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">100%</div>
+                        <div class="hero-stat-label">Gratuito</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Steps -->
+    <section class="process-steps">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">El proceso completo</h2>
+                <p class="section-subtitle">4 pasos simples para conocer el valor exacto de tu auto</p>
+            </div>
+
+            <div class="steps-container">
+                <!-- Step 1 -->
+                <div class="step">
+                    <div class="step-content">
+                        <div class="step-badge">Paso 1</div>
+                        <h2 class="step-title">Completas el formulario</h2>
+                        <p class="step-description">
+                            Ingresa información básica sobre tu auto. Solo necesitas datos que cualquier dueño conoce, sin documentos ni información técnica compleja.
+                        </p>
+                        <ul class="step-features">
+                            <li>Marca y modelo exacto</li>
+                            <li>Año del vehículo</li>
+                            <li>Kilometraje actual</li>
+                            <li>Estado general (excelente, bueno, regular)</li>
+                            <li>Ciudad donde está ubicado</li>
+                            <li>Tu email para recibir el informe</li>
+                        </ul>
+                        <a href="https://tasar.rolav.cl" class="step-cta">Probar el formulario</a>
+                    </div>
+                    <div class="step-visual">
+                        <div class="form-mockup">
+                            <div class="form-field">
+                                <label class="form-label">Marca del vehículo</label>
+                                <select class="form-input form-select">
+                                    <option>Toyota</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label">Modelo</label>
+                                <select class="form-input form-select">
+                                    <option>Corolla</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label">Año</label>
+                                <input type="text" class="form-input" value="2020">
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label">Kilometraje</label>
+                                <input type="text" class="form-input" value="45.000 km">
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label">Estado</label>
+                                <select class="form-input form-select">
+                                    <option>Excelente</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step">
+                    <div class="step-content">
+                        <div class="step-badge">Paso 2</div>
+                        <h2 class="step-title">Analizamos el mercado</h2>
+                        <p class="step-description">
+                            Nuestro algoritmo busca automáticamente miles de autos similares al tuyo en todos los portales principales de Chile. Procesamos la información en tiempo real.
+                        </p>
+                        <ul class="step-features">
+                            <li>Análisis de MercadoLibre, ChileAutos, Facebook</li>
+                            <li>Filtrado por marca, modelo, año y región</li>
+                            <li>Comparación con autos en estados similares</li>
+                            <li>Ajuste por kilometraje y características</li>
+                            <li>Procesamiento de tendencias actuales</li>
+                            <li>Validación con datos históricos</li>
+                        </ul>
+                    </div>
+                    <div class="step-visual">
+                        <div class="analysis-mockup">
+                            <span class="analysis-icon">🔍</span>
+                            <p class="analysis-text">Analizando mercado...</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <p style="color: #64748b; font-size: 0.9rem;">
+                                Revisando 1,247 Toyota Corolla similares<br>
+                                Procesando precios actuales...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step">
+                    <div class="step-content">
+                        <div class="step-badge">Paso 3</div>
+                        <h2 class="step-title">Calculamos tu precio</h2>
+                        <p class="step-description">
+                            Procesamos toda la información recopilada y generamos 3 rangos de precios estratégicos para tu auto, considerando diferentes escenarios de venta.
+                        </p>
+                        <ul class="step-features">
+                            <li><strong>Venta rápida:</strong> Precio para vender en 30 días</li>
+                            <li><strong>Precio óptimo:</strong> Equilibrio perfecto precio-tiempo</li>
+                            <li><strong>Con paciencia:</strong> Precio máximo posible</li>
+                            <li>Análisis comparativo con competencia</li>
+                            <li>Recomendación personalizada para tu caso</li>
+                            <li>Nivel de confianza de la tasación</li>
+                        </ul>
+                    </div>
+                    <div class="step-visual">
+                        <div class="report-mockup">
+                            <div class="report-header">
+                                <div class="report-title">Tu Toyota Corolla 2020</div>
+                                <div class="report-subtitle">Tasación personalizada</div>
+                            </div>
+                            <div class="price-cards">
+                                <div class="price-card">
+                                    <div class="price-label">Venta rápida</div>
+                                    <div class="price-value">$12.800.000</div>
+                                </div>
+                                <div class="price-card optimal">
+                                    <div class="price-label">Recomendado</div>
+                                    <div class="price-value">$13.950.000</div>
+                                </div>
+                                <div class="price-card">
+                                    <div class="price-label">Con paciencia</div>
+                                    <div class="price-value">$14.800.000</div>
+                                </div>
+                            </div>
+                            <button class="download-button">Descargar informe PDF</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step">
+                    <div class="step-content">
+                        <div class="step-badge">Paso 4</div>
+                        <h2 class="step-title">Recibes tu informe completo</h2>
+                        <p class="step-description">
+                            Te enviamos un PDF profesional con toda la información detallada, consejos de venta y acceso automático a nuestro Club de Beneficios exclusivo.
+                        </p>
+                        <ul class="step-features">
+                            <li>Informe PDF completo y profesional</li>
+                            <li>Análisis detallado del mercado</li>
+                            <li>3 estrategias de precios personalizadas</li>
+                            <li>Consejos para vender más rápido</li>
+                            <li>Contactos de servicios recomendados</li>
+                            <li>Acceso automático al Club de Beneficios</li>
+                        </ul>
+                        <a href="#" onclick="alert('¡Perfecto! Ahora ya sabes cómo funciona. ¿Listo para tasar tu auto?')" class="step-cta">Ver ejemplo de informe</a>
+                    </div>
+                    <div class="step-visual">
+                        <div style="text-align: center;">
+                            <div style="font-size: 4rem; margin-bottom: 25px;">📧</div>
+                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+                                <div style="font-weight: 700; margin-bottom: 10px;">¡Informe enviado!</div>
+                                <div style="opacity: 0.9; font-size: 0.9rem;">Revisa tu email (incluyendo spam)</div>
+                            </div>
+                            <div style="color: #64748b; font-size: 0.95rem; line-height: 1.5;">
+                                ✓ PDF con tasación completa<br>
+                                ✓ Club de beneficios activado<br>
+                                ✓ Contactos y consejos incluidos
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="technology">
+        <div class="container">
+            <div class="tech-content">
+                <div class="section-header">
+                    <h2 class="section-title">La tecnología detrás de Rolav</h2>
+                    <p class="section-subtitle">Así es como logramos la precisión del 96% en nuestras tasaciones</p>
+                </div>
+
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <span class="tech-icon">🤖</span>
+                        <h3 class="tech-title">Inteligencia Artificial</h3>
+                        <p class="tech-desc">Algoritmos de machine learning que aprenden constantemente del mercado chileno para mejorar la precisión de cada tasación.</p>
+                    </div>
+
+                    <div class="tech-card">
+                        <span class="tech-icon">🔄</span>
+                        <h3 class="tech-title">Datos en tiempo real</h3>
+                        <p class="tech-desc">Conectados 24/7 a los principales portales de venta para capturar cambios de precios y nuevas publicaciones al instante.</p>
+                    </div>
+
+                    <div class="tech-card">
+                        <span class="tech-icon">📊</span>
+                        <h3 class="tech-title">Big Data automotriz</h3>
+                        <p class="tech-desc">Base de datos con más de 100.000 vehículos analizados, incluyendo históricos de precios y tendencias de mercado.</p>
+                    </div>
+
+                    <div class="tech-card">
+                        <span class="tech-icon">🎯</span>
+                        <h3 class="tech-title">Análisis predictivo</h3>
+                        <p class="tech-desc">Modelos que predicen el comportamiento futuro del mercado y ajustan los precios según tendencias emergentes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency Section -->
+    <section class="transparency">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Transparencia total</h2>
+                <p class="section-subtitle">Queremos que sepas exactamente cómo trabajamos y de dónde vienen nuestros datos</p>
+            </div>
+
+            <div class="transparency-grid">
+                <div class="transparency-card">
+                    <span class="transparency-icon">🔍</span>
+                    <h3 class="transparency-title">Fuentes de datos</h3>
+                    <p class="transparency-desc">De dónde obtenemos la información para generar tu tasación:</p>
+                    <div class="transparency-details">
+                        <ul>
+                            <li>MercadoLibre - Portal principal de venta</li>
+                            <li>ChileAutos - Especializado en vehículos</li>
+                            <li>Facebook Marketplace - Mercado social</li>
+                            <li>Portales regionales específicos</li>
+                            <li>Concesionarios oficiales</li>
+                            <li>Datos históricos de ventas reales</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="transparency-card">
+                    <span class="transparency-icon">⚙️</span>
+                    <h3 class="transparency-title">Metodología</h3>
+                    <p class="transparency-desc">Cómo procesamos la información para calcular tu precio:</p>
+                    <div class="transparency-details">
+                        <ul>
+                            <li>Filtrado por marca, modelo y año idénticos</li>
+                            <li>Agrupación por rangos de kilometraje</li>
+                            <li>Ajuste según estado reportado</li>
+                            <li>Compensación por ubicación geográfica</li>
+                            <li>Ponderación por fecha de publicación</li>
+                            <li>Validación con patrones históricos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="transparency-card">
+                    <span class="transparency-icon">🛡️</span>
+                    <h3 class="transparency-title">Garantías</h3>
+                    <p class="transparency-desc">Nuestros compromisos contigo y tu información:</p>
+                    <div class="transparency-details">
+                        <ul>
+                            <li>Datos actualizados cada 24 horas</li>
+                            <li>Tasación 100% gratuita, sin letra chica</li>
+                            <li>Privacidad total de tu información</li>
+                            <li>Sin spam ni llamadas comerciales</li>
+                            <li>Soporte técnico gratuito incluido</li>
+                            <li>Derecho a eliminar tus datos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">¿Listo para comenzar?</h2>
+                <p class="cta-subtitle">Ahora que conoces todo el proceso, descubre cuánto vale realmente tu auto. Solo toma 5 minutos y es completamente gratis.</p>
+                <a href="https://tasar.rolav.cl" class="cta-button">Tasar mi auto ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTÓN FLOTANTE - Solo Club de Beneficios -->
+    <a href="club-beneficios.html" class="benefits-button" title="Club de Beneficios">
+        🎁
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div style="font-size: 2rem; font-weight: 800; margin-bottom: 15px; color: white;">🚗 Rolav</div>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 20px;">
+                        La plataforma más confiable de Chile para conocer el valor real de tu auto.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Enlaces útiles</h4>
+                    <div class="footer-links">
+                        <a href="https://tasar.rolav.cl">🚗 Tasar mi auto</a>
+                        <a href="como-funciona.html">❓ Cómo funciona</a>
+                        <a href="blog.html">📝 Blog</a>
+                        <a href="casos-exito.html">🏆 Casos de éxito</a>
+                        <a href="contacto.html">📞 Contacto</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <div class="footer-links">
+                        <a href="guia-vender-auto.html">📖 Guía para vender</a>
+                        <a href="club-beneficios.html">🎁 Club de beneficios</a>
+                        <a href="calculadora.html">📊 Calculadora</a>
+                        <a href="faq.html">❔ Preguntas frecuentes</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <div class="footer-links">
+                        <a href="terminos.html">Términos de servicio</a>
+                        <a href="privacidad.html">Política de privacidad</a>
+                        <a href="cookies.html">Política de cookies</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-bar">
+                <div class="copyright">
+                    <span>© 2025 Rolav. Todos los derechos reservados. 🇨🇱 Hecho en Chile con ❤️</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
