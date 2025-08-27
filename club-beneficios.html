@@ -18,6 +18,71 @@
             background: #f8fafc;
         }
 
+        /* Floating Share Button */
+        .floating-button {
+            position: fixed;
+            right: 20px;
+            width: 70px;
+            height: 70px;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9998;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            overflow: visible;
+        }
+
+        .share-button {
+            top: 100px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        .circular-text {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            animation: rotate 10s linear infinite;
+        }
+
+        .circular-text span {
+            position: absolute;
+            left: 50%;
+            font-size: 7px;
+            font-weight: 800;
+            text-transform: uppercase;
+            transform-origin: 0 35px;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 1px;
+        }
+
+        .share-text span:nth-child(1) { transform: rotate(0deg) translate(-50%, 0); }
+        .share-text span:nth-child(2) { transform: rotate(25deg) translate(-50%, 0); }
+        .share-text span:nth-child(3) { transform: rotate(50deg) translate(-50%, 0); }
+        .share-text span:nth-child(4) { transform: rotate(75deg) translate(-50%, 0); }
+        .share-text span:nth-child(5) { transform: rotate(100deg) translate(-50%, 0); }
+        .share-text span:nth-child(6) { transform: rotate(125deg) translate(-50%, 0); }
+        .share-text span:nth-child(7) { transform: rotate(150deg) translate(-50%, 0); }
+        .share-text span:nth-child(8) { transform: rotate(175deg) translate(-50%, 0); }
+        .share-text span:nth-child(9) { transform: rotate(200deg) translate(-50%, 0); }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .share-button:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6);
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+        }
+
         /* Header Navigation */
         .header {
             background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
@@ -246,6 +311,41 @@
             line-height: 1.6;
         }
 
+        .partner-placeholder {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+            padding: 60px 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 2px dashed #cbd5e1;
+            color: #64748b;
+            font-style: italic;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .partner-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+            animation: shimmerPlaceholder 3s infinite;
+        }
+
+        @keyframes shimmerPlaceholder {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
         .benefit-details {
             background: #f8fafc;
             padding: 15px;
@@ -297,7 +397,7 @@
         }
 
         .contact-btn {
-            background: #8b5cf6;
+            background: #25d366;
             color: white;
             padding: 8px 16px;
             border-radius: 8px;
@@ -308,7 +408,7 @@
         }
 
         .contact-btn:hover {
-            background: #7c3aed;
+            background: #22c55e;
             transform: translateY(-1px);
         }
 
@@ -476,6 +576,27 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .floating-button {
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+            }
+            
+            .circular-text {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .circular-text span {
+                font-size: 6px;
+                transform-origin: 0 30px;
+            }
+
+            .share-button {
+                top: 90px;
+                right: 15px;
+            }
+
             .container {
                 padding: 30px 15px;
             }
@@ -506,10 +627,40 @@
                 padding: 8px 16px;
                 font-size: 0.85rem;
             }
+
+            .floating-button {
+                width: 55px;
+                height: 55px;
+                font-size: 18px;
+            }
+            
+            .circular-text {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .circular-text span {
+                font-size: 5px;
+                transform-origin: 0 27.5px;
+                font-weight: 900;
+            }
+
+            .share-button {
+                top: 80px;
+                right: 12px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Floating Share Button -->
+    <button class="floating-button share-button" id="shareButton" onclick="shareRolav()" title="Compartir Club Rolav">
+        <div class="circular-text share-text">
+            <span>C</span><span>O</span><span>M</span><span>P</span><span>A</span><span>R</span><span>T</span><span>I</span><span>R</span>
+        </div>
+        📤
+    </button>
+
     <!-- Header Navigation -->
     <header class="header">
         <div class="nav-container">
@@ -527,7 +678,7 @@
             <h1>🎁 Club Rolav - Beneficios Exclusivos</h1>
             <p>Aprovecha descuentos y ofertas especiales en servicios relacionados con tu auto. Solo para clientes que han usado nuestra tasación gratuita.</p>
             <div class="membership-badge">
-                ✨ Membresía gratuita de por vida
+                ✨ Membresía gratuita
             </div>
         </div>
 
@@ -536,15 +687,15 @@
             <h3 style="color: #1e293b; font-weight: 700; margin-bottom: 10px;">Nuestros clientes ya han ahorrado</h3>
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-number">$2.1M</div>
-                    <div class="stat-label">Ahorro promedio anual por cliente</div>
+                    <div class="stat-number">$500K - $2.1M</div>
+                    <div class="stat-label">Rango de ahorro anual por cliente</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">3,247</div>
+                    <div class="stat-number">200+</div>
                     <div class="stat-label">Clientes activos del club</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">47</div>
+                    <div class="stat-number">5</div>
                     <div class="stat-label">Empresas aliadas en Chile</div>
                 </div>
                 <div class="stat-item">
@@ -574,26 +725,30 @@
                     <p class="benefit-description">
                         Descuento especial en la compra de 2 o más neumáticos en nuestros aliados comerciales. Incluye balanceo gratuito.
                     </p>
-                    <div class="benefit-details">
-                        <h4>📍 Disponible en:</h4>
-                        <ul>
-                            <li>Euroneumáticos (Santiago y regiones)</li>
-                            <li>Bridgestone Center (15 sucursales)</li>
-                            <li>Falabella Auto (todo Chile)</li>
-                        </ul>
+                    <div class="partner-placeholder" style="background: white; border: 1px solid #e2e8f0;">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+                            <!-- Círculo del logo -->
+                            <div style="width: 50px; height: 50px; background: #333; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 35px; height: 35px; border: 3px solid white; border-radius: 50%;"></div>
+                            </div>
+                            <!-- Texto del logo -->
+                            <div style="font-family: Arial, sans-serif; font-weight: bold; font-style: normal;">
+                                <span style="color: #f59e0b; font-size: 1.6rem; letter-spacing: -1px;">BUSCA</span><span style="color: #333; font-size: 1.6rem; letter-spacing: -1px;">NEUMATICO</span><span style="color: #9ca3af; font-size: 1.2rem;">.cl</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="benefit-details">
-                        <h4>✅ Condiciones:</h4>
+                        <h4>✅ Servicios incluidos:</h4>
                         <ul>
-                            <li>Mínimo 2 neumáticos por compra</li>
-                            <li>Válido en todas las marcas disponibles</li>
-                            <li>Incluye balanceo gratuito</li>
-                            <li>Garantía estándar del fabricante</li>
+                            <li>Descuento en marcas premium y económicas</li>
+                            <li>Balanceo y alineación incluida</li>
+                            <li>Garantía extendida del fabricante</li>
+                            <li>Instalación profesional</li>
                         </ul>
                     </div>
                     <div class="benefit-contact">
-                        <div class="contact-info">Contacto directo</div>
-                        <a href="https://wa.me/56912345678?text=Hola%2C%20soy%20cliente%20Rolav%20y%20quiero%20el%20descuento%20en%20neum%C3%A1ticos" class="contact-btn">💬 WhatsApp</a>
+                        <div class="contact-info">Contactar proveedor</div>
+                        <a href="https://wa.me/56912345678?text=Hola%2C%20soy%20cliente%20Rolav%20y%20quiero%20informaci%C3%B3n%20sobre%20descuentos%20en%20neum%C3%A1ticos" class="contact-btn">💬 WhatsApp</a>
                     </div>
                 </div>
 
@@ -609,8 +764,17 @@
                     <p class="benefit-description">
                         Servicios de lavado premium, encerado, pulido y detailing completo para mantener tu auto como nuevo.
                     </p>
+                    <div class="partner-placeholder" style="background: white; border: 1px solid #e2e8f0;">
+                        <div style="text-align: center;">
+                            <h4 style="color: #64748b; margin-bottom: 15px; font-size: 0.95rem;">¿Tienes un centro de detailing?</h4>
+                            <a href="https://wa.me/56912345678?text=Hola%2C%20tengo%20un%20centro%20de%20detailing%20y%20me%20interesa%20ser%20partner%20de%20Rolav%20para%20ofrecer%20descuentos%20a%20sus%20clientes" 
+                               style="background: #25d366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-block; transition: all 0.3s ease;">
+                                💬 Quiero ser partner
+                            </a>
+                        </div>
+                    </div>
                     <div class="benefit-details">
-                        <h4>🧽 Servicios incluidos:</h4>
+                        <h4>🧽 Servicios disponibles:</h4>
                         <ul>
                             <li>Lavado premium exterior e interior</li>
                             <li>Encerado y pulido profesional</li>
@@ -618,17 +782,9 @@
                             <li>Tratamiento de cuero y plásticos</li>
                         </ul>
                     </div>
-                    <div class="benefit-details">
-                        <h4>📍 Centros autorizados:</h4>
-                        <ul>
-                            <li>AutoSpa Premium (Las Condes, Providencia)</li>
-                            <li>DetailPro Chile (Ñuñoa, San Miguel)</li>
-                            <li>Lavado Express VIP (todo Santiago)</li>
-                        </ul>
-                    </div>
                     <div class="benefit-contact">
-                        <div class="contact-info">Reserva cita</div>
-                        <a href="https://wa.me/56987654321?text=Cliente%20Rolav%2C%20quiero%20agendar%20detailing%20con%20descuento" class="contact-btn">📅 Agendar</a>
+                        <div class="contact-info">Reservar cita</div>
+                        <a href="https://wa.me/56987654321?text=Hola%2C%20soy%20cliente%20Rolav%20y%20quiero%20agendar%20un%20servicio%20de%20detailing%20con%20descuento" class="contact-btn">📅 Agendar</a>
                     </div>
                 </div>
 
@@ -644,27 +800,27 @@
                     <p class="benefit-description">
                         Descuento especial en pólizas de seguros para tu auto. Compara entre múltiples aseguradoras y obtén el mejor precio.
                     </p>
-                    <div class="benefit-details">
-                        <h4>🏢 Aseguradoras participantes:</h4>
-                        <ul>
-                            <li>MAPFRE Chile</li>
-                            <li>Liberty Seguros</li>
-                            <li>HDI Seguros</li>
-                            <li>Zurich Chile</li>
-                        </ul>
+                    <div class="partner-placeholder" style="background: white; border: 1px solid #e2e8f0;">
+                        <div style="text-align: center;">
+                            <h4 style="color: #64748b; margin-bottom: 15px; font-size: 0.95rem;">¿Eres corredor o compañía de seguros?</h4>
+                            <a href="https://wa.me/56912345678?text=Hola%2C%20soy%20corredor%2Fcompa%C3%B1%C3%ADa%20de%20seguros%20y%20me%20interesa%20ser%20partner%20de%20Rolav%20para%20ofrecer%20descuentos%20en%20seguros%20automotrices%20a%20sus%20clientes" 
+                               style="background: #25d366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-block; transition: all 0.3s ease;">
+                                💬 Quiero ser partner
+                            </a>
+                        </div>
                     </div>
                     <div class="benefit-details">
-                        <h4>📋 Incluye:</h4>
+                        <h4>📋 Beneficios incluidos:</h4>
                         <ul>
                             <li>Cotización gratuita comparativa</li>
                             <li>Asesoría personalizada</li>
-                            <li>Trámites 100% online</li>
-                            <li>Renovación automática con descuento</li>
+                            <li>Trámites simplificados</li>
+                            <li>Cobertura amplia y personalizable</li>
                         </ul>
                     </div>
                     <div class="benefit-contact">
-                        <div class="contact-info">Cotiza gratis</div>
-                        <a href="mailto:seguros@rolav.cl?subject=Cotización%20Seguro%20-%20Cliente%20Rolav" class="contact-btn">📧 Cotizar</a>
+                        <div class="contact-info">Cotizar seguro</div>
+                        <a href="https://wa.me/56933112233?text=Hola%2C%20soy%20cliente%20Rolav%20y%20quiero%20cotizar%20un%20seguro%20automotriz%20con%20descuento" class="contact-btn">📋 Cotizar</a>
                     </div>
                 </div>
 
@@ -680,26 +836,27 @@
                     <p class="benefit-description">
                         Mantenciones, reparaciones y diagnósticos con talleres certificados. Garantía en todos los trabajos realizados.
                     </p>
+                    <div class="partner-placeholder" style="background: white; border: 1px solid #e2e8f0;">
+                        <div style="text-align: center;">
+                            <h4 style="color: #64748b; margin-bottom: 15px; font-size: 0.95rem;">¿Tienes un taller mecánico?</h4>
+                            <a href="https://wa.me/56912345678?text=Hola%2C%20tengo%20un%20taller%20mec%C3%A1nico%20y%20me%20interesa%20ser%20partner%20de%20Rolav%20para%20ofrecer%20descuentos%20en%20mantenciones%20y%20reparaciones%20a%20sus%20clientes" 
+                               style="background: #25d366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-block; transition: all 0.3s ease;">
+                                💬 Quiero ser partner
+                            </a>
+                        </div>
+                    </div>
                     <div class="benefit-details">
                         <h4>🔧 Servicios disponibles:</h4>
                         <ul>
                             <li>Mantenciones programadas</li>
                             <li>Diagnóstico computarizado</li>
-                            <li>Reparaciones generales</li>
+                            <li>Reparaciones generales y especializadas</li>
                             <li>Cambio de aceite y filtros</li>
                         </ul>
                     </div>
-                    <div class="benefit-details">
-                        <h4>🏭 Talleres autorizados:</h4>
-                        <ul>
-                            <li>Red de talleres Autoplanet</li>
-                            <li>Centros de servicio Copec</li>
-                            <li>Talleres independientes certificados</li>
-                        </ul>
-                    </div>
                     <div class="benefit-contact">
-                        <div class="contact-info">Encuentra taller</div>
-                        <a href="https://wa.me/56911223344?text=Cliente%20Rolav%2C%20necesito%20servicio%20mec%C3%A1nico" class="contact-btn">🔍 Buscar</a>
+                        <div class="contact-info">Encontrar taller</div>
+                        <a href="https://wa.me/56911223344?text=Hola%2C%20soy%20cliente%20Rolav%20y%20necesito%20servicio%20mec%C3%A1nico%20con%20descuento" class="contact-btn">🔍 Buscar</a>
                     </div>
                 </div>
 
@@ -713,29 +870,29 @@
                         </div>
                     </div>
                     <p class="benefit-description">
-                        Financiamiento preferencial para compra de autos nuevos y usados. Pre-aprobación en 24 horas.
+                        Financiamiento preferencial para compra de autos nuevos y usados. Pre-aprobación rápida y condiciones especiales.
                     </p>
-                    <div class="benefit-details">
-                        <h4>🏦 Instituciones participantes:</h4>
-                        <ul>
-                            <li>Banco de Chile</li>
-                            <li>Scotiabank</li>
-                            <li>Banco Falabella</li>
-                            <li>Coopeuch</li>
-                        </ul>
+                    <div class="partner-placeholder" style="background: white; border: 1px solid #e2e8f0;">
+                        <div style="text-align: center;">
+                            <h4 style="color: #64748b; margin-bottom: 15px; font-size: 0.95rem;">¿Ofreces créditos automotrices?</h4>
+                            <a href="https://wa.me/56912345678?text=Hola%2C%20ofrezco%20cr%C3%A9ditos%20automotrices%20y%20me%20interesa%20ser%20partner%20de%20Rolav%20para%20ofrecer%20condiciones%20preferenciales%20a%20sus%20clientes" 
+                               style="background: #25d366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-block; transition: all 0.3s ease;">
+                                💬 Quiero ser partner
+                            </a>
+                        </div>
                     </div>
                     <div class="benefit-details">
-                        <h4>💰 Beneficios:</h4>
+                        <h4>💰 Beneficios incluidos:</h4>
                         <ul>
-                            <li>Hasta 0,5% menos en tasa de interés</li>
-                            <li>Evaluación crediticia gratuita</li>
-                            <li>Hasta 7 años de financiamiento</li>
-                            <li>Sin gastos operacionales</li>
+                            <li>Tasa de interés preferencial</li>
+                            <li>Evaluación crediticia rápida</li>
+                            <li>Financiamiento hasta 7 años</li>
+                            <li>Gastos operacionales reducidos</li>
                         </ul>
                     </div>
                     <div class="benefit-contact">
-                        <div class="contact-info">Simula tu crédito</div>
-                        <a href="mailto:creditos@rolav.cl?subject=Simulación%20Crédito%20-%20Cliente%20Rolav" class="contact-btn">📊 Simular</a>
+                        <div class="contact-info">Simular crédito</div>
+                        <a href="https://wa.me/56944556677?text=Hola%2C%20soy%20cliente%20Rolav%20y%20quiero%20simular%20un%20cr%C3%A9dito%20automotriz%20con%20condiciones%20preferenciales" class="contact-btn">📊 Simular</a>
                     </div>
                 </div>
 
@@ -751,6 +908,15 @@
                     <p class="benefit-description">
                         Amplio catálogo de accesorios para personalizar y mejorar tu auto. Desde fundas hasta sistemas de audio.
                     </p>
+                    <div class="partner-placeholder" style="background: white; border: 1px solid #e2e8f0;">
+                        <div style="text-align: center;">
+                            <h4 style="color: #64748b; margin-bottom: 15px; font-size: 0.95rem;">¿Vendes accesorios automotrices?</h4>
+                            <a href="https://wa.me/56912345678?text=Hola%2C%20vendo%20accesorios%20automotrices%20y%20me%20interesa%20ser%20partner%20de%20Rolav%20para%20ofrecer%20descuentos%20a%20sus%20clientes" 
+                               style="background: #25d366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-block; transition: all 0.3s ease;">
+                                💬 Quiero ser partner
+                            </a>
+                        </div>
+                    </div>
                     <div class="benefit-details">
                         <h4>🛒 Productos disponibles:</h4>
                         <ul>
@@ -760,18 +926,9 @@
                             <li>Luces LED y modificaciones</li>
                         </ul>
                     </div>
-                    <div class="benefit-details">
-                        <h4>🏪 Tiendas participantes:</h4>
-                        <ul>
-                            <li>AutoZone Chile</li>
-                            <li>Repuestos O'Reilly</li>
-                            <li>Casa Royal</li>
-                            <li>Tiendas especializadas online</li>
-                        </ul>
-                    </div>
                     <div class="benefit-contact">
-                        <div class="contact-info">Catálogo online</div>
-                        <a href="https://wa.me/56933445566?text=Cliente%20Rolav%2C%20quiero%20ver%20accesorios%20con%20descuento" class="contact-btn">🛍️ Comprar</a>
+                        <div class="contact-info">Ver catálogo</div>
+                        <a href="https://wa.me/56933445566?text=Hola%2C%20soy%20cliente%20Rolav%20y%20quiero%20ver%20accesorios%20automotrices%20con%20descuento" class="contact-btn">🛍️ Comprar</a>
                     </div>
                 </div>
             </div>
@@ -811,17 +968,17 @@
                 <div class="step">
                     <div class="step-number">1</div>
                     <h4>Usa la tasación gratuita</h4>
-                    <p>Completa tu tasación gratuita en tasar.rolav.cl y recibe tu informe por email</p>
+                    <p>Completa tu tasación gratuita en tasar.rolav.cl y conoce el valor real de tu auto</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h4>Activa tu membresía</h4>
-                    <p>Te enviamos automáticamente tu código de membresía del Club Rolav por email</p>
+                    <h4>Contacta con nosotros</h4>
+                    <p>Contáctanos por WhatsApp para activar tu membresía y acceder a los descuentos</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
                     <h4>Disfruta los beneficios</h4>
-                    <p>Usa tu código en cualquiera de nuestros aliados comerciales y ahorra dinero</p>
+                    <p>Te conectamos directamente con nuestros aliados comerciales para que obtengas tus descuentos</p>
                 </div>
             </div>
 
@@ -833,19 +990,84 @@
             <div class="terms-section">
                 <h4>📋 Términos y condiciones</h4>
                 <ul>
-                    <li>La membresía es gratuita y de por vida para clientes que completen la tasación</li>
+                    <li>La membresía es gratuita para clientes que completen la tasación</li>
                     <li>Los descuentos pueden variar según disponibilidad del aliado comercial</li>
                     <li>Algunos beneficios requieren un consumo mínimo específico</li>
                     <li>Los descuentos no son acumulables con otras promociones</li>
                     <li>Rolav se reserva el derecho de modificar los beneficios con aviso previo</li>
-                    <li>Para usar los beneficios debes presentar tu código de membresía</li>
                     <li>Los aliados comerciales pueden cambiar sin previo aviso</li>
+                    <li>Para acceder a los beneficios debes identificarte como cliente Rolav</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <script>
+        // Web Share API functionality
+        function shareRolav() {
+            const shareData = {
+                title: 'Club Rolav - Beneficios Exclusivos para Clientes',
+                text: '🎁 Descubre beneficios exclusivos del Club Rolav: descuentos en neumáticos, seguros, mecánica y más. ¡Solo para clientes que usen la tasación gratuita!',
+                url: window.location.href
+            };
+
+            // Check if Web Share API is supported
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .then(() => console.log('Compartido exitosamente'))
+                    .catch((error) => console.log('Error al compartir:', error));
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                fallbackShare(shareData);
+            }
+        }
+
+        function fallbackShare(shareData) {
+            // Try to copy to clipboard first
+            const textToShare = `${shareData.title}\n${shareData.text}\n${shareData.url}`;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(textToShare).then(() => {
+                    alert('¡Enlace copiado al portapapeles! Puedes pegarlo donde quieras compartir el Club Rolav.');
+                }).catch(() => {
+                    // If clipboard fails, show the text to copy manually
+                    showShareModal(textToShare);
+                });
+            } else {
+                showShareModal(textToShare);
+            }
+        }
+
+        function showShareModal(textToShare) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.8); z-index: 10000; display: flex;
+                align-items: center; justify-content: center; padding: 20px;
+            `;
+            
+            const content = document.createElement('div');
+            content.style.cssText = `
+                background: white; padding: 30px; border-radius: 15px; max-width: 500px;
+                width: 100%; text-align: center; font-family: inherit;
+            `;
+            
+            content.innerHTML = `
+                <h3 style="margin: 0 0 15px 0; color: #1e293b;">Compartir Club Rolav</h3>
+                <p style="margin: 0 0 20px 0; color: #64748b;">Copia este texto para compartir:</p>
+                <textarea readonly style="width: 100%; height: 100px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; resize: none;">${textToShare}</textarea>
+                <button onclick="this.parentElement.parentElement.remove()" style="margin-top: 15px; background: #8b5cf6; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer;">Cerrar</button>
+            `;
+            
+            modal.appendChild(content);
+            document.body.appendChild(modal);
+            
+            // Select the text in textarea
+            const textarea = content.querySelector('textarea');
+            textarea.focus();
+            textarea.select();
+        }
+
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
