@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cómo funciona Rolav | Proceso completo de tasación de autos en Chile</title>
-    <meta name="description" content="Descubre paso a paso cómo funciona Rolav. Desde el formulario hasta tu informe PDF. Proceso transparente, rápido y 100% gratuito.">
+    <meta name="description" content="Descubre paso a paso cómo funciona Rolav. Desde el formulario hasta tu email con información detallada. Proceso transparente, rápido y 100% gratuito.">
     <style>
         * {
             margin: 0;
@@ -524,6 +524,14 @@
             z-index: 1;
         }
 
+        .technology .section-title {
+            color: white;
+        }
+
+        .technology .section-subtitle {
+            color: rgba(255,255,255,0.9);
+        }
+
         .tech-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -768,13 +776,12 @@
         }
 
         /* BOTÓN FLOTANTE - Solo Club de Beneficios */
-        .benefits-button {
+        .floating-button {
             position: fixed;
             top: 120px;
             right: 20px;
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, #f59e0b, #d97706);
+            width: 70px;
+            height: 70px;
             border: none;
             border-radius: 50%;
             display: flex;
@@ -782,39 +789,57 @@
             justify-content: center;
             cursor: pointer;
             z-index: 9998;
-            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
             transition: all 0.3s ease;
             color: white;
             font-size: 24px;
             text-decoration: none;
+            overflow: visible;
+        }
+
+        .benefits-button {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
         }
 
         .benefits-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.6);
             background: linear-gradient(135deg, #d97706, #b45309);
         }
 
-        .benefits-button::after {
-            content: 'Club de Beneficios';
+        .circular-text {
             position: absolute;
-            right: 70px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            white-space: nowrap;
-            opacity: 0;
-            transform: translateX(10px);
-            transition: all 0.3s ease;
-            pointer-events: none;
+            width: 70px;
+            height: 70px;
+            animation: rotate 10s linear infinite;
         }
 
-        .benefits-button:hover::after {
-            opacity: 1;
-            transform: translateX(0);
+        .circular-text span {
+            position: absolute;
+            left: 50%;
+            font-size: 7px;
+            font-weight: 800;
+            text-transform: uppercase;
+            transform-origin: 0 35px;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 1px;
+        }
+
+        .benefits-text span:nth-child(1) { transform: rotate(0deg) translate(-50%, 0); }
+        .benefits-text span:nth-child(2) { transform: rotate(18deg) translate(-50%, 0); }
+        .benefits-text span:nth-child(3) { transform: rotate(36deg) translate(-50%, 0); }
+        .benefits-text span:nth-child(4) { transform: rotate(54deg) translate(-50%, 0); }
+        .benefits-text span:nth-child(5) { transform: rotate(72deg) translate(-50%, 0); }
+        .benefits-text span:nth-child(6) { transform: rotate(90deg) translate(-50%, 0); }
+        .benefits-text span:nth-child(7) { transform: rotate(108deg) translate(-50%, 0); }
+        .benefits-text span:nth-child(8) { transform: rotate(126deg) translate(-50%, 0); }
+        .benefits-text span:nth-child(9) { transform: rotate(144deg) translate(-50%, 0); }
+        .benefits-text span:nth-child(10) { transform: rotate(162deg) translate(-50%, 0); }
+        .benefits-text span:nth-child(11) { transform: rotate(180deg) translate(-50%, 0); }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* Mobile */
@@ -832,16 +857,25 @@
                 font-size: 0.9rem;
             }
 
+            .floating-button {
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+            }
+            
+            .circular-text {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .circular-text span {
+                font-size: 6px;
+                transform-origin: 0 30px;
+            }
+
             .benefits-button {
                 top: 100px;
                 right: 15px;
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-
-            .benefits-button::after {
-                display: none;
             }
 
             .hero h1 {
@@ -893,12 +927,26 @@
         }
 
         @media (max-width: 480px) {
+            .floating-button {
+                width: 55px;
+                height: 55px;
+                font-size: 18px;
+            }
+            
+            .circular-text {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .circular-text span {
+                font-size: 5px;
+                transform-origin: 0 27.5px;
+                font-weight: 900;
+            }
+
             .benefits-button {
                 top: 90px;
                 right: 12px;
-                width: 44px;
-                height: 44px;
-                font-size: 18px;
             }
 
             .hero h1 {
@@ -966,7 +1014,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Cómo funciona Rolav</h1>
-                <p>Descubre el proceso completo paso a paso. Desde que ingresas los datos de tu auto hasta que recibes tu informe completo en PDF. Transparente, rápido y 100% gratuito.</p>
+                <p>Descubre el proceso completo paso a paso. Desde que ingresas los datos de tu auto hasta que recibes tu email con toda la información detallada. Transparente, rápido y 100% gratuito.</p>
 
                 <div class="hero-stats">
                     <div class="hero-stat">
@@ -1009,7 +1057,7 @@
                             <li>Kilometraje actual</li>
                             <li>Estado general (excelente, bueno, regular)</li>
                             <li>Ciudad donde está ubicado</li>
-                            <li>Tu email para recibir el informe</li>
+                            <li>Tu email para recibir la información</li>
                         </ul>
                         <a href="https://tasar.rolav.cl" class="step-cta">Probar el formulario</a>
                     </div>
@@ -1114,7 +1162,7 @@
                                     <div class="price-value">$14.800.000</div>
                                 </div>
                             </div>
-                            <button class="download-button">Descargar informe PDF</button>
+                            <button class="download-button">Información detallada por email</button>
                         </div>
                     </div>
                 </div>
@@ -1123,29 +1171,29 @@
                 <div class="step">
                     <div class="step-content">
                         <div class="step-badge">Paso 4</div>
-                        <h2 class="step-title">Recibes tu informe completo</h2>
+                        <h2 class="step-title">Recibes toda la información por email</h2>
                         <p class="step-description">
-                            Te enviamos un PDF profesional con toda la información detallada, consejos de venta y acceso automático a nuestro Club de Beneficios exclusivo.
+                            Te enviamos un email completo con toda la información detallada, consejos de venta y acceso automático a nuestro Club de Beneficios exclusivo.
                         </p>
                         <ul class="step-features">
-                            <li>Informe PDF completo y profesional</li>
+                            <li>Email completo con toda la información</li>
                             <li>Análisis detallado del mercado</li>
                             <li>3 estrategias de precios personalizadas</li>
                             <li>Consejos para vender más rápido</li>
                             <li>Contactos de servicios recomendados</li>
                             <li>Acceso automático al Club de Beneficios</li>
                         </ul>
-                        <a href="#" onclick="alert('¡Perfecto! Ahora ya sabes cómo funciona. ¿Listo para tasar tu auto?')" class="step-cta">Ver ejemplo de informe</a>
+                        <a href="#" onclick="alert('¡Perfecto! Ahora ya sabes cómo funciona. ¿Listo para tasar tu auto?')" class="step-cta">Ver proceso completo</a>
                     </div>
                     <div class="step-visual">
                         <div style="text-align: center;">
                             <div style="font-size: 4rem; margin-bottom: 25px;">📧</div>
                             <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 20px; border-radius: 15px; margin-bottom: 20px;">
-                                <div style="font-weight: 700; margin-bottom: 10px;">¡Informe enviado!</div>
-                                <div style="opacity: 0.9; font-size: 0.9rem;">Revisa tu email (incluyendo spam)</div>
+                                <div style="font-weight: 700; margin-bottom: 10px;">¡Email enviado!</div>
+                                <div style="opacity: 0.9; font-size: 0.9rem;">Revisa tu bandeja de entrada (incluyendo spam)</div>
                             </div>
                             <div style="color: #64748b; font-size: 0.95rem; line-height: 1.5;">
-                                ✓ PDF con tasación completa<br>
+                                ✓ Información completa con tasación<br>
                                 ✓ Club de beneficios activado<br>
                                 ✓ Contactos y consejos incluidos
                             </div>
@@ -1266,7 +1314,10 @@
     </section>
 
     <!-- BOTÓN FLOTANTE - Solo Club de Beneficios -->
-    <a href="club-beneficios.html" class="benefits-button" title="Club de Beneficios">
+    <a href="club-beneficios.html" class="floating-button benefits-button" title="Club de Beneficios">
+        <div class="circular-text benefits-text">
+            <span>C</span><span>L</span><span>U</span><span>B</span><span> </span><span>R</span><span>O</span><span>L</span><span>A</span><span>V</span><span> </span>
+        </div>
         🎁
     </a>
 
